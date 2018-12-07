@@ -1,0 +1,143 @@
+package pl.szkolamotocyklowa.app.User;
+
+import org.hibernate.annotations.CreationTimestamp;
+import pl.szkolamotocyklowa.app.activities.Activities;
+
+import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+@Table(name = "USERS")
+public class User {
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+
+    @NotBlank
+    @Column(unique = true)
+    @Size(min = 4)
+    private String username;
+
+    @NotBlank
+    @Size(min = 4)
+    private String firstName;
+
+    @NotBlank
+    @Size(min = 4)
+    private String lastName;
+
+    @NotBlank
+    private String password;
+
+    @NotEmpty
+    @Email
+    @Column(unique = true)
+    private String email;
+
+
+    @CreationTimestamp
+    private LocalDate created;
+
+    @Transient
+    private String fullName;
+
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<Activities> activities ;
+
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getFullName() {
+        return firstName + " " + lastName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public LocalDate getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDate created) {
+        this.created = created;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public List<Activities> getActivities() {
+        return activities;
+    }
+
+    public void setActivities(List<Activities> activities) {
+        this.activities = activities;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", password='" + password + '\'' +
+                ", email='" + email + '\'' +
+                ", created=" + created +
+                ", fullName='" + fullName + '\'' +
+                '}';
+    }
+}
