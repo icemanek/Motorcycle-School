@@ -17,7 +17,7 @@ If you want to improve your skills its place for you! <br>
 <li>more input forms (example- you have to choose your birth date or if you dont have driver licence you cant buy course) <br></li>
 </ul>
 
-<b>technologies which i am using: <br></b>
+<b>Technologies which i am using: <br></b>
 <ul>
 <li>Java 8 <br></li>
 <li>Spring <br></li>
