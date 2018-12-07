@@ -15,7 +15,7 @@ If you want to improve your skills its place for you! <br>
 <li>Place where you can buy course and pay for it <br></li>
 <li>Send mail to users. Remember of next your course, link to activate account after register, informations (example if we delete one course you should get mail with informations) <br></li>
 <li>more input forms (example- you have to choose your birth date or if you dont have driver licence you cant buy course) <br></li>
-<ul>
+</ul>
 
 <b>technologies which i am using: <br></b>
 <ul>
