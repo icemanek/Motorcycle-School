@@ -53,13 +53,8 @@
                             <input type="checkbox">Zapamiętaj mnie
                         </div>
 
-                        <c:if test="${loginFailed == true}">
-                        <div class="error" style="padding-bottom: 20px">Nieprawidłowe dane</div>
-                        <a href="/user/add" class="btn btn-primary">Zarejestruj</a>
-                        </c:if>
-
                         <div class="form-group">
-                            <input type="submit" value="Zaloguj" class="btn float-right login_btn" href="../"></div>
+                            <input type="submit" value="Zaloguj" class="btn float-right login_btn"/></div>
                 </div>
             </div>
             <div class="card-footer">

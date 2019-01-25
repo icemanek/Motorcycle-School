@@ -43,7 +43,7 @@
         <form:errors path="email" element="div" cssClass="error"/>
 
 
-    <label for="activitiesId">Kurs:</label> &nbsp Proszę wybrać chociaż jeden!
+    <label for="activitiesId">Kurs:</label> &nbsp Proszę wybrać jeden!
     <form:select path="activities" id="activitiesId" itemLabel="id" itemValue="id" class="form-control" required="">
         <form:options items="${activities}"/>
     </form:select>
