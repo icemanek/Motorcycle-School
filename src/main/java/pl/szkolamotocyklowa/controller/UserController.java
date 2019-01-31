@@ -28,20 +28,21 @@ public class UserController {
     @Autowired
     Validator validator;
 
+
     @Autowired
     ActivitiesRepository activitiesRepository;
 
-    @ModelAttribute("activities")
-    public Collection<Activities> kursy(){
-
-        List<Activities> kursy2 = new ArrayList<>();
-
-        kursy2.add(new Activities("Podstawowy"));
-        kursy2.add(new Activities("Rozszerzony"));
-        kursy2.add(new Activities("Premium"));
-
-        return kursy2;
-    }
+//    @ModelAttribute("activities")
+//    public Collection<Activities> kursy(){
+//
+//        List<Activities> kursy2 = new ArrayList<>();
+//
+//        kursy2.add(new Activities("Podstawowy"));
+//        kursy2.add(new Activities("Rozszerzony"));
+//        kursy2.add(new Activities("Premium"));
+//
+//        return kursy2;
+//    }
 
 
     // <----------------------------Dodawanie użytkownika------------------->
@@ -56,7 +57,8 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public String addUser(@ModelAttribute @Valid User user, BindingResult bindingResult) {
+    public String addUser(@ModelAttribute @Valid User user, @ModelAttribute Activities activities, BindingResult bindingResult) {
+
 
        User user1 =  userRepository.findByEmail(user.getEmail());
 
@@ -74,6 +76,8 @@ public class UserController {
         else {
 
             userRepository.save(user);
+            activitiesRepository.save(activities);
+
             return "home";
         }
 

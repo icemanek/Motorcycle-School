@@ -1,13 +1,14 @@
 package pl.szkolamotocyklowa.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class GeneralController {
 
 
-        @RequestMapping("/")
+        @GetMapping("/")
     public String home(){
 
             return "home";
@@ -33,8 +34,10 @@ public class GeneralController {
             return "contact";
         }
 
-        @RequestMapping("/login/**")
+        @RequestMapping("/login**")
     public String zalogowany(){
+
+
 
             return "zalogowany";
         }
