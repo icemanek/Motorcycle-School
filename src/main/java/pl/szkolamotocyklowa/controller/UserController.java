@@ -32,17 +32,17 @@ public class UserController {
     @Autowired
     ActivitiesRepository activitiesRepository;
 
-//    @ModelAttribute("activities")
-//    public Collection<Activities> kursy(){
-//
-//        List<Activities> kursy2 = new ArrayList<>();
-//
-//        kursy2.add(new Activities("Podstawowy"));
-//        kursy2.add(new Activities("Rozszerzony"));
-//        kursy2.add(new Activities("Premium"));
-//
-//        return kursy2;
-//    }
+    @ModelAttribute("activities")
+    public Collection<Activities> kursy(){
+
+        List<Activities> kursy2 = new ArrayList<>();
+
+        kursy2.add(new Activities("Podstawowy"));
+        kursy2.add(new Activities("Rozszerzony"));
+        kursy2.add(new Activities("Premium"));
+
+        return kursy2;
+    }
 
 
     // <----------------------------Dodawanie użytkownika------------------->
@@ -77,6 +77,7 @@ public class UserController {
 
             userRepository.save(user);
             activitiesRepository.save(activities);
+            user.setEnabled(1);
 
             return "home";
         }
