@@ -27,16 +27,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         auth.jdbcAuthentication().dataSource(dataSource)
                 .usersByUsernameQuery("SELECT username, password, enabled FROM USERS where username=?")
                 .authoritiesByUsernameQuery("SELECT username,role FROM USERS_ROLE WHERE username=?");
-                auth.inMemoryAuthentication().withUser("admin").password("1234").roles("ADMIN");
-                auth.inMemoryAuthentication().withUser("player").password("1234").roles("USERS");
+
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/admin/**").access("hasRole('ROLE_ADMIN')")
-                .antMatchers("login/**").access("hasRole('ROLE_USERS')")
-                .and().formLogin(); //.loginPage("/login.jsp");
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("login/**").hasRole("USERS_ROLE")
+                .antMatchers("/", "/kursy/**","/instructor/**","/onas","/drive","/contact","/user/all").permitAll()
+                .and().formLogin();
         http.logout().logoutSuccessUrl("/");
     }
 }
