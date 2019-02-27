@@ -29,6 +29,9 @@ public class UserController {
     Validator validator;
 
 
+
+
+
     @Autowired
     ActivitiesRepository activitiesRepository;
 
@@ -56,6 +59,8 @@ public class UserController {
 
     }
 
+
+
     @PostMapping("/add")
     public String addUser(@ModelAttribute @Valid User user, @ModelAttribute Activities activities, BindingResult bindingResult) {
 
@@ -76,8 +81,6 @@ public class UserController {
         else {
 
             userRepository.save(user);
-            activitiesRepository.save(activities);
-            user.setEnabled(1);
 
             return "home";
         }

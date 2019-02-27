@@ -1,10 +1,10 @@
 package pl.szkolamotocyklowa.app.User;
 
 
-import org.hibernate.annotations.ColumnDefault;
+
 import org.hibernate.annotations.CreationTimestamp;
 import org.mindrot.jbcrypt.BCrypt;
-import pl.szkolamotocyklowa.app.activities.Activities;
+
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -12,10 +12,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.List;
+
+
 
 @Entity
-@Table(name = "USERS")
 public class User {
 
 
@@ -45,8 +45,8 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    @ColumnDefault("1")
-    private int enabled;
+
+    private int enabled = 1;
 
     @CreationTimestamp
     private LocalDate created;
@@ -54,9 +54,18 @@ public class User {
     @Transient
     private String fullName;
 
+    private String role = "user";
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Activities> activities;
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    //    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    private List<Activities> activities;
 
 
     public Long getId() {
@@ -123,13 +132,13 @@ public class User {
         this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
-    public List<Activities> getActivities() {
-        return activities;
-    }
-
-    public void setActivities(List<Activities> activities) {
-        this.activities = activities;
-    }
+//    public List<Activities> getActivities() {
+//        return activities;
+//    }
+//
+//    public void setActivities(List<Activities> activities) {
+//        this.activities = activities;
+//    }
 
     public int getEnabled() {
 
@@ -141,5 +150,8 @@ public class User {
         this.enabled = enabled;
 
     }
+
+
+
 
 }

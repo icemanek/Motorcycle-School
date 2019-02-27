@@ -37,7 +37,7 @@ public class LoginController {
             return "login";
         }
 
-               return "home";
+               return "zalogowany";
     }
 
 

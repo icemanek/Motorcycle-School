@@ -43,11 +43,11 @@
         <form:errors path="email" element="div" cssClass="error"/>
 
 
-    <label for="activitiesId">Kurs:</label> &nbsp Proszę wybrać jeden!
-    <form:select path="activities" id="activitiesId" itemLabel="id" itemValue="id" class="form-control" required="">
-        <form:options items="${activities}"/>
-    </form:select>
-    <form:errors path="activities" element="div" cssClass="error"/>
+    <%--<label for="activitiesId">Kurs:</label> &nbsp Proszę wybrać jeden!--%>
+    <%--<form:select path="activities" id="activitiesId" itemLabel="id" itemValue="id" class="form-control" required="">--%>
+        <%--<form:options items="${activities}"/>--%>
+    <%--</form:select>--%>
+    <%--<form:errors path="activities" element="div" cssClass="error"/>--%>
 
     <form:hidden path="created"></form:hidden>
 
