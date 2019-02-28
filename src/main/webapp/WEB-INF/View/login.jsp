@@ -21,7 +21,7 @@
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
 </head>
 <body>
-<form:form method="post" modelAttribute="user">
+<form:form method="post" >
 <a href="/" >Strona Główna</a>
 <div class="container">
     <div class="d-flex justify-content-center h-100">
@@ -34,7 +34,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-user"></i></span>
                             </div>
-                            <label for="usernameId"></label>
+                            <label for="usernameId">
                             <form:input type="text" path="username" id="usernameId" class="form-control"
                                         placeholder="Login"/>
                             <form:errors path="username" element="div" cssClass="error"/>
@@ -44,7 +44,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"><i class="fas fa-key"></i></span>
                             </div>
-                            <label for="passwordId"></label>
+                            <label for="passwordId">
                             <form:input type="password" path="password" id="passwordId" class="form-control"
                                         placeholder="Hasło"/>
                             <form:errors path="password" element="div" cssClass="error"/>
@@ -55,11 +55,11 @@
 
                         <div class="form-group">
                             <input type="submit" value="Zaloguj" class="btn float-right login_btn"/></div>
-                </div>
+                    </form></div>
             </div>
             <div class="card-footer">
                 <div class="d-flex justify-content-center links">
-                    Nie masz konta?<a href="/user/add">Zrejestruj się</a>
+                    Nie masz konta?<a href="/user/add">Zrejestruj się</a></div>
                 </div>
                 <div class="d-flex justify-content-center">
                     <a href="#">Zapomniałeś hasła?</a>
@@ -67,8 +67,9 @@
             </div>
 
         </div>
-
+</div>
     </div>
+
     </form:form>
 </div>
 </body>

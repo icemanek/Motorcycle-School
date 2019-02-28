@@ -39,6 +39,6 @@ public class GeneralController {
 
 
 
-            return "zalogowany";
+            return "loggg";
         }
 }

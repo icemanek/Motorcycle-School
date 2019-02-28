@@ -21,7 +21,9 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login(Model model) {
+
         model.addAttribute("user", new User());
+
         return "login";
     }
 
@@ -37,7 +39,7 @@ public class LoginController {
             return "login";
         }
 
-               return "zalogowany";
+               return "login";
     }
 
 
