@@ -19,6 +19,7 @@
 
 ZALOGOWALES SIE!
 
+Welcome ${user.firstname}
 
 
 <br>

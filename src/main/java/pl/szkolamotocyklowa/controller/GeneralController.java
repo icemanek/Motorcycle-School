@@ -34,11 +34,5 @@ public class GeneralController {
             return "contact";
         }
 
-        @RequestMapping("/login**")
-    public String zalogowany(){
 
-
-
-            return "loggg";
-        }
 }

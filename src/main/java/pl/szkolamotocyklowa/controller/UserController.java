@@ -29,9 +29,6 @@ public class UserController {
     Validator validator;
 
 
-
-
-
     @Autowired
     ActivitiesRepository activitiesRepository;
 
