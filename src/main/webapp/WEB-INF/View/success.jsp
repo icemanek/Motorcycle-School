@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -19,7 +20,11 @@
 
 ZALOGOWALES SIE!
 
-Welcome ${user.firstname}
+Welcome <c:forEach var="users" items="${user}">
+    <tr>
+    <td>${users.firstName}</td>
+    </tr>
+</c:forEach>
 
 
 <br>
