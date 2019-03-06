@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="../css/styles.css">
 </head>
 <body>
+
 <form:form method="post" >
 <a href="/" >Strona Główna</a>
 <div class="container">

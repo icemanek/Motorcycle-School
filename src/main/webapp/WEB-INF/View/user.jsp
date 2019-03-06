@@ -12,6 +12,7 @@
     <%@ include file="parts/header.jsp" %>
 </head>
 <body>
+
 <form:form method="post" modelAttribute="user">
 
     <label for="usernameId">Login:</label>  &nbsp Musi mieć więcej niz 4 znaki!

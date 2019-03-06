@@ -18,6 +18,7 @@
     <%@ include file="parts/header.jsp" %>
 </head>
 <body>
+<div class="content">
 <span class="about">
 Informacje o nas
 
@@ -43,7 +44,7 @@ Informacje o nas
     <br>
     <br>
 </span>
-
+</div>
 <%@ include file="parts/footer.jsp" %>
 </body>
 </html>

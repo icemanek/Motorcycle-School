@@ -23,7 +23,7 @@
     </script>
 </head>
 <body>
-
+<div class="content">
 
 <h1 class="header">Lista kursantów</h1>
 <table border="1px" style="position: center">
@@ -64,7 +64,7 @@
 
 <br>
 <br>
-
+</div>
 
 <%@ include file="parts/footer.jsp" %>
 </body>

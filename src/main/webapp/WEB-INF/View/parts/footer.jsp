@@ -13,7 +13,7 @@
 </head>
 <body>
 
-<footer class="section footer-classic context-dark bg-image" style="background: #343a40; color:rgba(255,255,255,.5)" >
+<footer class="section footer-classic context-dark bg-image" >
     <div class="container">
         <div class="row row-30">
             <div class="col-md-4 col-xl-5">

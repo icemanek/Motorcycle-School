@@ -21,7 +21,7 @@
     <%@ include file="parts/header.jsp" %>
 </head>
 <body>
-
+<div class="content">
 <h1 class="header">Dodaj instruktora</h1>
 <form:form method="post" modelAttribute="instructor">
 
@@ -53,6 +53,7 @@
 <br>
 <a href="/">Strona Główna</a>
 <br>
+</div>
 <%@ include file="parts/footer.jsp" %>
 </body>
 </html>

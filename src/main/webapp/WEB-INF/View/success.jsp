@@ -17,7 +17,7 @@
 
 </head>
 <body>
-
+<div class="content">
 ZALOGOWALES SIE!
 
 Welcome <c:forEach var="users" items="${user}">
@@ -30,6 +30,7 @@ Welcome <c:forEach var="users" items="${user}">
 <br>
 <a href="/">Strona Główna</a>
 <br>
+</div>
 <%@ include file="parts/footer.jsp" %>
 </body>
 </html>

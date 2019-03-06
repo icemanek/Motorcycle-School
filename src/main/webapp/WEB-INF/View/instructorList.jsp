@@ -31,7 +31,7 @@
     </script>
 </head>
 <body>
-
+<div class="content">
 
 <h1 class="header">Lista instruktorów</h1>
 <table border="1px">
@@ -77,6 +77,7 @@
 <br>
 <a href="/">Strona Główna</a>
 <br>
+</div>
 <%@ include file="parts/footer.jsp" %>
 </body>
 </html>

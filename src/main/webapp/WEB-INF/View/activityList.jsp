@@ -30,6 +30,7 @@
     </script>
 </head>
 <body>
+<div class="content">
 <div class="demo2">
     <div class="container">
         <h4 style="padding-top:10px">Wybierz swój kurs!</h4>
@@ -85,6 +86,7 @@
 
         </div>
     </div>
+</div>
 </div>
 </body>
 </html>

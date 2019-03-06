@@ -18,7 +18,7 @@
     <%@ include file="parts/header.jsp" %>
 </head>
 <body>
-
+<div class="content">
 <div class="col-md-4">
     <h5>Informacje</h5>
     <dl class="contact-list">
@@ -35,7 +35,7 @@
         </dd>
     </dl>
 </div>
-
+</div>
 
 
 <%@ include file="parts/footer.jsp" %>

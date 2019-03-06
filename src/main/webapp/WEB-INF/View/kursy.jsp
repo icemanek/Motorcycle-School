@@ -22,6 +22,7 @@
     <%@ include file="parts/header.jsp" %>
 </head>
 <body>
+<div class="content">
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
     <!-- Brand -->
     <a class="navbar-brand" href="#">Menu</a>
@@ -71,6 +72,7 @@
 
 <a href="/">Strona Główna</a>
 <br>
+</div>
 <%@ include file="parts/footer.jsp" %>
 </body>
 </html>
