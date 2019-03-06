@@ -30,6 +30,6 @@ Welcome <c:forEach var="users" items="${user}">
 <br>
 <a href="/">Strona Główna</a>
 <br>
-<%@ include file="../View/footer.jsp" %>
+<%@ include file="parts/footer.jsp" %>
 </body>
 </html>

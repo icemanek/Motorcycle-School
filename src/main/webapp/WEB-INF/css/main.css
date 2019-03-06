@@ -11,8 +11,8 @@ body.light-mode {
 
 body.dark-mode{
 
-    background-color:black;
-    color: white;
+    background-color:#353535;
+    color: grey;
 }
 
 .container {
@@ -39,7 +39,7 @@ body.dark-mode{
 }
 
 .learn-more-text {
-    font-family: 'Roboto';
+
     fill: #fff;
     pointer-events: none;
     font-size: 14px;
@@ -58,7 +58,7 @@ body.dark-mode{
 }
 
 .nav-copy {
-    font-family: 'Roboto';
+
     fill: #fff;
     fill-opacity: 1;
     -webkit-transition: all 250ms ease-in;
@@ -73,7 +73,7 @@ body.dark-mode{
 }
 .service text {
     font-size: 14px;
-    font-family: 'Roboto';
+
     text-anchor: middle;
 }
 .service .icon-wrapper {

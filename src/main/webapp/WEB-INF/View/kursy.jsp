@@ -19,7 +19,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <%@ include file="../View/header.jsp" %>
+    <%@ include file="parts/header.jsp" %>
 </head>
 <body>
 <nav class="navbar navbar-expand-md bg-dark navbar-dark">
@@ -71,6 +71,6 @@
 
 <a href="/">Strona Główna</a>
 <br>
-<%@ include file="../View/footer.jsp" %>
+<%@ include file="parts/footer.jsp" %>
 </body>
 </html>

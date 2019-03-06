@@ -9,7 +9,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-    <%@ include file="../View/header.jsp" %>
+    <%@ include file="parts/header.jsp" %>
 </head>
 <body>
 <form:form method="post" modelAttribute="user">
@@ -56,6 +56,6 @@
 
 Masz już konto?
 <a href="/login"  class="bubbly-button" style="color: white"> Zaloguj się</a>
-<%@ include file="../View/footer.jsp" %>
+<%@ include file="parts/footer.jsp" %>
 </body>
 </html>

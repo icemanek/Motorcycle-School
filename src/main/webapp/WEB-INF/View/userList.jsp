@@ -12,7 +12,7 @@
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <%@ include file="../View/header.jsp" %>
+    <%@ include file="parts/header.jsp" %>
     <script>
         function confirmDelete(id, fullName) {
             if (confirm("Czy na pewno usunac użytkownika \"" + fullName + "\"")) {
@@ -66,6 +66,6 @@
 <br>
 
 
-<%@ include file="../View/footer.jsp" %>
+<%@ include file="parts/footer.jsp" %>
 </body>
 </html>
