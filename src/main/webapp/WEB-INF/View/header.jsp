@@ -14,18 +14,25 @@
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script>
+
+        function toggleDarkLight() {
+            var body = document.getElementById("body");
+            var currentClass = body.className;
+            body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+        }
+
+    </script>
 </head>
-<body>
 
-
-<!------ Include the above in your HEAD tag ---------->
-
-<body>
+<body id="body" class="light-mode">
 <header>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
         <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item active">
+                    <button type="button" name="dark_light" onclick="toggleDarkLight()" title="Przełącz na tryb nocny/dzienny">Noc/Dzień</button>
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
