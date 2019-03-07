@@ -11,7 +11,8 @@
 <head>
     <title>Dodaj Instruktora</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-    
+    <link href="../css/instruktor.css" rel="stylesheet">
+
 
 </head>
 <%@ include file="parts/header.jsp" %>
@@ -39,14 +40,10 @@
 
     <form:input type="text" path="emailInstructor" id="emailId"/>
     <form:errors path="emailInstructor" element="div"/>
-    <br>
-    <br>
-    <br>
-
-    <input type="submit" value="Save">
 </form:form>
-
-<a href="/">Strona Główna</a>
+    <br>
+    <button class="button" type="submit" name="light-mode"><span>Zapisz</span></button>
+    <button class="button" name="light-mode" onclick="window.location.href='/'"><span>Strona główna </span></button>
 </div>
 </center>
 <%@ include file="parts/footer.jsp" %>
