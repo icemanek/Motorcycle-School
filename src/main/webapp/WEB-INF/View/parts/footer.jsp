@@ -11,7 +11,7 @@
 
     <link href="../css/foot.css" rel="stylesheet">
 </head>
-<body>
+<body id="body" class="light-mode">
 
 <footer class="section footer-classic context-dark bg-image" >
     <div class="container">
@@ -29,7 +29,7 @@
                     <dd>00-000 Domek ul. Szkolna 5</dd>
                 </dl>
                 <dl class="contact-list">
-                    <dt>email:</dt>
+                    <dt>Email:</dt>
                     <dd><a href="mailto:#">emil_sankowski@tlen.pl</a></dd>
                 </dl>
                 <dl class="contact-list">

@@ -23,7 +23,7 @@
     <h2>Zapraszamy to zapoznania się z naszą ofertą </h2>
 
 
-    <button class="button" style="vertical-align:middle" onclick="window.location.href='/kursy/all'"><span>Sprawdź! </span></button>
+    <button class="button"  onclick="window.location.href='/kursy/all'"><span>Sprawdź! </span></button>
     </div>
 </body>
 <footer><%@ include file="parts/footer.jsp" %></footer>
