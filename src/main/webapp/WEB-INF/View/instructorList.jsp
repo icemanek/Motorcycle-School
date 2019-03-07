@@ -12,15 +12,8 @@
     <title>Lista Instruktorów</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/main.css" rel="stylesheet">
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/main.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="../css/instructors.css" rel="stylesheet">
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <%@ include file="parts/header.jsp" %>
     <script>
         function confirmDelete(id, fullName) {
             if (confirm("Czy na pewno usunac instruktora \"" + fullName + "\"")) {
@@ -30,15 +23,14 @@
 
     </script>
 </head>
-<body>
+<%@ include file="parts/header.jsp" %>
+<body id="body" class="light-mode">
+<center>
 <div class="content">
-
 <h1 class="header">Lista instruktorów</h1>
 <table border="1px">
 <thead>
 <tr class="row-name">
-
-
         <th>Imię</th>
         <th>Nazwisko</th>
         <th>E-Mail</th>
@@ -51,33 +43,21 @@
             <td>${instructor.firstNameInstructor}</td>
             <td>${instructor.lastNameInstructor}</td>
             <td>${instructor.emailInstructor}</td>
-
-
             <td>
                 <a class="btn btn-danger edit" href="#" onclick="confirmDelete(${instructor.id}, '${instructor.firstNameInstructor}')">Delete
                     <i class="fa fa-trash" aria-hidden="true"></i></a>
-
                 &nbsp
                 <a class="btn btn-info edit" href="/instructor/update/${instructor.id}">Edytuj
                     <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
-
             </td>
         </tr>
-
     </c:forEach>
     </tbody>
 </table>
-
-<br>
-<br>
-
-<a href="/instructor/add">Dodaj Instruktora</a>
-<br>
-<br>
-<br>
-<a href="/">Strona Główna</a>
-<br>
+    <button class="button" name="light-mode" onclick="window.location.href='/instructor/add'"><span>Dodaj instruktora </span></button>
+    <button class="button" name="light-mode" onclick="window.location.href='/'"><span>Strona główna </span></button>
 </div>
+</center>
 <%@ include file="parts/footer.jsp" %>
 </body>
 </html>
