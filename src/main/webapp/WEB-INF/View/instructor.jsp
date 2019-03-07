@@ -22,22 +22,16 @@
 <h1 class="header">Dodaj instruktora</h1>
 
 <form:form method="post" modelAttribute="instructor">
-
     <label for="firstNameId">Imię</label>
-
     <form:input type="text" path="firstNameInstructor" id="firstNameId"/>
     <form:errors path="firstNameInstructor" element="div"/>
     <br/>
-
     <label for="lastNameId">Nazwisko</label>
-
     <form:input type="text" path="lastNameInstructor" id="lastNameId"/>
     <form:errors path="lastNameInstructor" element="div"/>
     <br>
     <br>
-
     <label for="emailId">E-Mail</label>
-
     <form:input type="text" path="emailInstructor" id="emailId"/>
     <form:errors path="emailInstructor" element="div"/>
 </form:form>
