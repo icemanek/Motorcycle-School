@@ -17,14 +17,15 @@
 <%@ include file="parts/header.jsp" %>
 
 <body id="body" class="light-mode">
-
+<center>
     <div class="content">
-    <h1>WItamy na stronie doskonalenia nauki jazdy na motocyklu!</h1>
+    <h1>Witamy na stronie doskonalenia nauki jazdy na motocyklu!</h1>
     <h2>Zapraszamy to zapoznania się z naszą ofertą </h2>
 
 
-    <button class="button"  onclick="window.location.href='/kursy/all'"><span>Sprawdź! </span></button>
+    <button class="button" name="light-mode" onclick="window.location.href='/kursy/all'"><span>Sprawdź! </span></button>
     </div>
+</center>
 </body>
 <footer><%@ include file="parts/footer.jsp" %></footer>
 </html>
