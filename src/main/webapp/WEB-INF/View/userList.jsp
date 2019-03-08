@@ -4,15 +4,8 @@
 <head>
     <title>Lista Kursantów</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/main.css" rel="stylesheet">
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/main.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="../css/kursanci.css" rel="stylesheet">
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <%@ include file="parts/header.jsp" %>
     <script>
         function confirmDelete(id, fullName) {
             if (confirm("Czy na pewno usunac użytkownika \"" + fullName + "\"")) {
@@ -22,33 +15,37 @@
 
     </script>
 </head>
-<body>
-<div class="content">
 
-<h1 class="header">Lista kursantów</h1>
-<table border="1px" style="position: center">
+<%@ include file="parts/header.jsp" %>
+
+<body id="body" class="light-mode">
+
+<div class="content">
+    <center>
+<p class="header">Lista kursantów</p>
+<table class="container">
     <thead>
-    <tr class="row-name">
-        <th>Imię</th>
-        <th>Nazwisko</th>
-        <th>E-Mail</th>
-        <th>Data dodania</th>
-        <th>Kursy</th>
-        <th>Akcja</th>
+    <tr>
+        <th><h1>Imię</h1></th>
+        <th><h1>Nazwisko</h1></th>
+        <th><h1>E-Mail</h1></th>
+        <th><h1>Data dodania</h1></th>
+        <%--<th>Kursy</th>--%>
+        <th><h1>Akcja</h1></th>
     </tr>
     </thead>
     <tbody>
-    <tr class="row-content">
+    <%--<tr class="row-content">--%>
 <c:forEach var="users" items="${users}">
     <tr>
     <td>${users.firstName}</td>
     <td>${users.lastName}</td>
     <td>${users.email}</td>
     <td>${users.created}</td>
-    <td>${users.activities}</td>
+    <%--<td>${users.activities}</td>--%>
 
         <td>
-            <a class="btn btn-danger edit" href="#" onclick="confirmDelete(${users.id}, '${users.fullName}')">Delete
+            <a class="btn btn-danger edit" href="#" onclick="confirmDelete(${users.id}, '${users.fullName}')">Usuń
                 <i class="fa fa-trash" aria-hidden="true"></i> </a>
             &nbsp
 
@@ -61,9 +58,9 @@
 
     </c:forEach>
 </table>
-
 <br>
 <br>
+    </center>
 </div>
 
 <%@ include file="parts/footer.jsp" %>

@@ -27,14 +27,14 @@
 <body id="body" class="light-mode">
 <center>
 <div class="content">
-<h1 class="header">Lista instruktorów</h1>
-<table border="1px">
+<p>Lista instruktorów</p>
+<table class="container">
 <thead>
-<tr class="row-name">
-        <th>Imię</th>
-        <th>Nazwisko</th>
-        <th>E-Mail</th>
-        <th>Akcja</th>
+    <tr>
+        <th><h1>Imię</h1></th>
+        <th><h1>Nazwisko</h1></th>
+        <th><h1>E-Mail</h1></th>
+        <th><h1>Akcja</h1></th>
     </tr>
 </thead>
     <tbody>
