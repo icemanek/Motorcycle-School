@@ -11,7 +11,7 @@
     <title>Szkoła motocyklowa</title>
 
     <link href="../css/head.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
     <script>
 
@@ -28,36 +28,38 @@
 
     <nav class="main-navigation">
         <div class="navbar-header animated fadeInUp">
-            <a class="navbar-brand" href="#">Szkoła motocyklowa</a>
         </div>
         <ul class="nav-list">
             <li class="nav-list-item">
-                <a href="/" class="nav-link">Home</a>
+                <a href="/" class="nav-link"> <i class="fas fa-home"></i> Home</a>
             </li>
 
             <li class="nav-list-item">
-                <a href="/instructor/all" class="nav-link">Nauczyciele</a>
+                <a href="/instructor/all" class="nav-link"> <i class="fas fa-chalkboard-teacher"></i> Nauczyciele</a>
             </li>
             <li class="nav-list-item">
-                <a href="/onas" class="nav-link">O Nas</a>
+                <a href="/onas" class="nav-link"> <i class="fas fa-building"></i> O Nas</a>
             </li>
             <li class="nav-list-item">
-                <a href="/drive" class="nav-link">Jak dojechać</a>
+                <a href="/drive" class="nav-link"> <i class="fas fa-car"></i> Jak dojechać</a>
             </li>
             <li class="nav-list-item">
-                <a href="/contact" class="nav-link">Kontakt</a>
+                <a href="/contact" class="nav-link"> <i class="fas fa-file-signature"></i> Kontakt</a>
             </li>
             <li class="nav-list-item">
-                <a href="/user/all" class="nav-link">Kursanci</a>
+                <a href="/user/all" class="nav-link"> <i class="fas fa-users"></i> Kursanci</a>
             </li>
             <li class="nav-list-item">
-                <a href="/kursy/all" class="nav-link">Kursy</a>
+                <a href="/kursy/all" class="nav-link"> <i class="fas fa-shopping-cart"></i> Kursy</a>
             </li>
             <li class="login_btn">
-                <a href="/login" class="nav-link">Zaloguj się</a>
+                <a href="/login" class="nav-link"> <i class="fas fa-user"></i> Zaloguj się</a>
             </li>
             <li class="signup_btn">
-                <a href="/user/add" class="nav-link">Rejestracja</a>
+                <a href="/user/add" class="nav-link"> <i class="fas fa-user-plus"></i> Rejestracja</a>
+            </li>
+            <li class="signup_btn">
+                <a href="/user/add" class="nav-link"> <i class="fas fa-shopping-basket"></i> Koszyk</a>
             </li>
             <div class="onoffswitch">
                 <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onclick="toggleDarkLight()">

@@ -20,7 +20,6 @@
                 window.location.href = "/instructor/delete/" + id;
             }
         }
-
     </script>
 </head>
 <%@ include file="parts/header.jsp" %>

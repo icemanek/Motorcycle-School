@@ -29,7 +29,7 @@
         <th><h1>Imię</h1></th>
         <th><h1>Nazwisko</h1></th>
         <th><h1>E-Mail</h1></th>
-        <th><h1>Data dodania</h1></th>
+        <th><h1>Data utworzenia</h1></th>
         <%--<th>Kursy</th>--%>
         <th><h1>Akcja</h1></th>
     </tr>
