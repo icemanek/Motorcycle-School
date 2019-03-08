@@ -50,6 +50,9 @@
             <li class="nav-list-item">
                 <a href="/user/all" class="nav-link">Kursanci</a>
             </li>
+            <li class="nav-list-item">
+                <a href="/kursy/all" class="nav-link">Kursy</a>
+            </li>
             <li class="login_btn">
                 <a href="/login" class="nav-link">Zaloguj się</a>
             </li>

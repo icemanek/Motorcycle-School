@@ -33,7 +33,7 @@
                     <li><i class="fa fa-check"></i> Szkolenie na własnym motocyklu</li>
                     <li><i class="fa fa-check"></i>Kawa</li>
                 </ul>
-                    <a href="/user/add" class="pricingTable-signup">Zapisz się!</a>
+                    <a href="/user/add" class="pricingTable-signup">Wybierz</a>
                 </div>
             </div>
             <div class="col-md-4 col-sm-6">
@@ -49,7 +49,7 @@
                         <li><i class="fa fa-check"></i> Szkolenie na naszym motocyklu</li>
                         <li><i class="fa fa-check"></i>Kawa i ciastka</li>
                     </ul>
-                    <a href="/user/add" class="pricingTable-signup">Zapisz się!</a>
+                    <a href="/user/add" class="pricingTable-signup">Wybierz</a>
                 </div>
             </div>
 
@@ -66,7 +66,7 @@
                         <li><i class="fa fa-check"></i> Szkolenie na naszym motocyklu</li>
                         <li><i class="fa fa-check"></i>Kawa ,ciastka, impreza</li>
                     </ul>
-                    <a href="/user/add" class="pricingTable-signup">Zapisz się!</a>
+                    <a href="/user/add" class="pricingTable-signup">Wybierz</a>
                 </div>
             </div>
 

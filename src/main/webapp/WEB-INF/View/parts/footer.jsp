@@ -38,15 +38,15 @@
                     </dd>
                 </dl>
             </div>
-            <div class="col-md-4 col-xl-3">
-                <h5>Linki</h5>
-                <ul class="nav-list">
-                    <li><a href="/onas">O Nas</a></li>
-                    <li><a href="/kursy/all">Kursy</a></li>
-                    <li><a href="/drive">Jak dojechać</a></li>
-                    <li><a href="/contact">kontakt</a></li>
-                </ul>
-            </div>
+            <%--<div class="col-md-4 col-xl-3">--%>
+                <%--<h5>Linki</h5>--%>
+                <%--<ul class="nav-list">--%>
+                    <%--<li><a href="/onas">O Nas</a></li>--%>
+                    <%--<li><a href="/kursy/all">Kursy</a></li>--%>
+                    <%--<li><a href="/drive">Jak dojechać</a></li>--%>
+                    <%--<li><a href="/contact">kontakt</a></li>--%>
+                <%--</ul>--%>
+            <%--</div>--%>
         </div>
     </div>
 </footer>

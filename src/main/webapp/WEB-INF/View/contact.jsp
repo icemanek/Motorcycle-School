@@ -10,14 +10,12 @@
 <head>
     <title>Kontakt</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/main.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="../css/kontakt.css" rel="stylesheet">
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <%@ include file="parts/header.jsp" %>
 </head>
 <body>
+<%@ include file="parts/header.jsp" %>
+
 <div class="content">
 <div class="col-md-4">
     <h5>Informacje</h5>

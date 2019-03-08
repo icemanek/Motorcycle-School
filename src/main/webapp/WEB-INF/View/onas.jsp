@@ -10,14 +10,13 @@
 <head>
     <title>O Nas</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/main.css" rel="stylesheet">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link href="../css/about.css" rel="stylesheet">
 
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <%@ include file="parts/header.jsp" %>
 </head>
-<body>
+<body id="body" class="light-mode">
+
+
+<%@ include file="parts/header.jsp" %>
 <div class="content">
 <span class="about">
 Informacje o nas
