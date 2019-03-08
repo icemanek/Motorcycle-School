@@ -220,13 +220,13 @@
 <form:form method="post" modelAttribute="user" id="registration">
 
     <label for="usernameId">Login:</label>
-        <form:input type="text" path="username" id="usernameId" placeholder="Musi mieć przynajmniej 5 znaków" class="form-control" maxlength="100" minlength="5" required="" />
+        <form:input type="text" path="username" id="usernameId" placeholder="Wpisz login" class="form-control" maxlength="100" minlength="5" required="" />
         <form:errors path="username" element="div" cssClass="error"/>
 
 
 
         <label for="passwordId" >Hasło:
-        <form:input type="password" path="password" title="Musi zawierać jedną mała literę, jedną wielką, jedną cyfrę i jeden znak specjalny" placeholder="Musi mieć przynajmniej 8 znaków" id="passwordId" class="form-control" maxlength="100" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required="" />
+        <form:input type="password" path="password" title="Musi zawierać jedną mała literę, jedną wielką, jedną cyfrę i jeden znak specjalny" placeholder="Ustaw hasło" id="passwordId" class="form-control" maxlength="100" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required="" />
         <form:errors path="password" element="div" cssClass="error"/>
 
         </label>
@@ -239,12 +239,12 @@
 
     <label for="lastNameId">Nazwisko</label>
 
-    <form:input type="text" path="lastName" id="lastNameId" class="form-control" maxlength="100" minlength="2" required="" />
+    <form:input type="text" path="lastName" id="lastNameId" placeholder="Wpisz swoje nazwisko" class="form-control" maxlength="100" minlength="2" required="" />
     <form:errors path="lastName" element="div" cssClass="error"/>
 
     <label for="emailId">E-Mail</label>
 
-    <form:input type="text" path="email" id="emailId" class="form-control" maxlength="100" minlength="2" required="" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" />
+    <form:input type="text" path="email" id="emailId" class="form-control" placeholder="Wpisz swój email" maxlength="100" minlength="2" required="" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" />
         <form:errors path="email" element="div" cssClass="error"/>
 
     <label for="genderId">Płeć</label>
