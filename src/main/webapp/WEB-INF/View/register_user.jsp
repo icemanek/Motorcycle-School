@@ -10,22 +10,29 @@
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="/js/jquery/jquery.js"></script>
+
+
+
     <script>
-        $( function() {
-            $( "#datepicker" ).datepicker(
-                {
+        // $( function() {
+        //     $( "#datepicker" ).datepicker(
+        //         {
+        //             minDate: new Date(1900,1-1,1), maxDate: '-18Y',
+        //             dateFormat: 'dd/mm/yy',
+        //             defaultDate: new Date(1970,1-1,1),
+        //             changeMonth: true,
+        //             changeYear: true,
+        //             yearRange: '-110:-18'
+        //         }
+        //
+        //     );
+        // } );
 
 
-                    minDate: new Date(1900,1-1,1), maxDate: '-18Y',
-                    dateFormat: 'dd/mm/yy',
-                    defaultDate: new Date(1970,1-1,1),
-                    changeMonth: true,
-                    changeYear: true,
-                    yearRange: '-110:-18'
-                }
 
-            );
-        } );
+
+
 
         function CustomValidation(input) {
             this.invalidities = [];
@@ -213,58 +220,51 @@
 </head>
 <%@ include file="parts/header.jsp" %>
 
-<center>
+
 <body id="body" class="light-mode">
 
 
 <form:form method="post" modelAttribute="user" id="registration">
 
-    <label for="usernameId">Login:</label>
-        <form:input type="text" path="username" id="usernameId" placeholder="Wpisz login" class="form-control" maxlength="100" minlength="5" required="" />
+
+        <form:input type="text" path="username" id="usernameId" placeholder="Wpisz login" title="tylko litery i cyfry bez znaków specjalnych" pattern="^[a-zA-Z0-9]+$" class="form-control" maxlength="100" minlength="5" required="" />
         <form:errors path="username" element="div" cssClass="error"/>
 
 
 
-        <label for="passwordId" >Hasło:
-        <form:input type="password" path="password" title="Musi zawierać jedną mała literę, jedną wielką, jedną cyfrę i jeden znak specjalny" placeholder="Ustaw hasło" id="passwordId" class="form-control" maxlength="100" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required="" />
+        <form:input type="password" path="password" autocomplete="new-password" title="Musi zawierać jedną mała literę, jedną wielką, jedną cyfrę i jeden znak specjalny" placeholder="Ustaw hasło" id="passwordId" class="form-control" maxlength="100" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required="" />
         <form:errors path="password" element="div" cssClass="error"/>
 
-        </label>
 
-    <label for="firstNameId">Imię</label>
-
-    <form:input type="text" path="firstName" id="firstNameId" class="form-control" maxlength="100" minlength="3" required="" />
+    <form:input type="text" path="firstName" id="firstNameId" placeholder="Wpisz swoje imię" class="form-control" maxlength="100" minlength="3" required="" pattern="[^A-Za-z]+" />
     <form:errors path="firstName" element="div" cssClass="error"/>
 
 
-    <label for="lastNameId">Nazwisko</label>
 
-    <form:input type="text" path="lastName" id="lastNameId" placeholder="Wpisz swoje nazwisko" class="form-control" maxlength="100" minlength="2" required="" />
+
+    <form:input type="text" path="lastName" id="lastNameId" placeholder="Wpisz swoje nazwisko" class="form-control" pattern="[^A-Za-z]+" maxlength="100" minlength="2" required="" />
     <form:errors path="lastName" element="div" cssClass="error"/>
 
-    <label for="emailId">E-Mail</label>
 
     <form:input type="text" path="email" id="emailId" class="form-control" placeholder="Wpisz swój email" maxlength="100" minlength="2" required="" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" />
         <form:errors path="email" element="div" cssClass="error"/>
 
-    <label for="genderId">Płeć</label>
-    <form:select path="gender" id="genderId" class="form-control">
-        <form:option value="M"></form:option>
-        <form:option value="K"></form:option>
+
+    <form:select path="gender" id="genderId" class="form-control" >
+        <form:option value="">Płeć</form:option>
+        <form:option value="M">Mężczyzna</form:option>
+        <form:option value="K">Kobieta</form:option>
 </form:select>
 
-    <label for="licenceId">Czy posiadasz prawo jazdy kat A?
-    <form:select path="licence" id="licenceId" class="form-control">
-        <form:option value="Tak"></form:option>
-        <form:option value="Nie"></form:option>
-
+    <form:select path="licence" id="licenceId" class="form-control" >
+        <form:option value="">Czy posiadasz prawo jazdy kat A?</form:option>
+        <form:option  value="Tak">Tak</form:option>
+        <form:option disabled="true" value="Nie">Nie-jeśli nie posiadasz nie możesz się zarejestrować</form:option>
     </form:select>
 
-    </label>
 
-
-    <label for="datepicker">Data urodzenia</label>
-    <form:input path="birth" type="text" id="datepicker"/>
+    Data urodzenia
+    <form:input path="birth" type="date" value="2001-01-01" max="2001-01-01" placeholder="Data urodzenia" required="" />
     <form:errors path="birth" element="div" cssClass="error"/>
 
     <%--<label for="activitiesId">Kurs:</label> &nbsp Proszę wybrać jeden!--%>
@@ -274,6 +274,7 @@
     <%--<form:errors path="activities" element="div" cssClass="error"/>--%>
 
     <form:hidden path="created"></form:hidden>
+    <br>
 
     <input type="submit" value="Zarejestruj">
 </form:form>
@@ -281,6 +282,6 @@
 Masz już konto?
 <a href="/login"  class="bubbly-button" style="color: white"> Zaloguj się</a>
 <%@ include file="parts/footer.jsp" %>
-</center>
+
 </body>
 </html>

@@ -58,7 +58,7 @@ public class User {
     @Temporal(TemporalType.DATE)
     private Date birth;
 
-    private char gender;
+    private String gender;
 
     private String licence;
 
@@ -82,11 +82,11 @@ public class User {
 //    private List<Activities> activities;
 
 
-    public char getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(char gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 
