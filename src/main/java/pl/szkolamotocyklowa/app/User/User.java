@@ -2,8 +2,12 @@ package pl.szkolamotocyklowa.app.User;
 
 
 
+import javafx.scene.control.DatePicker;
 import org.hibernate.annotations.CreationTimestamp;
 import org.mindrot.jbcrypt.BCrypt;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.format.annotation.DateTimeFormat;
+import sun.util.calendar.BaseCalendar;
 
 
 import javax.persistence.*;
@@ -12,7 +16,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-
+import java.util.Date;
 
 
 @Entity
@@ -51,10 +55,20 @@ public class User {
     @CreationTimestamp
     private LocalDate created;
 
+    @Temporal(TemporalType.DATE)
+    private Date birth;
+
+    private char gender;
+
+    private String licence;
+
     @Transient
     private String fullName;
 
     private String role = "user";
+
+    public User() {
+    }
 
     public String getRole() {
         return role;
@@ -67,6 +81,22 @@ public class User {
     //    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 //    private List<Activities> activities;
 
+
+    public char getGender() {
+        return gender;
+    }
+
+    public void setGender(char gender) {
+        this.gender = gender;
+    }
+
+    public Date getBirth() {
+        return birth;
+    }
+
+    public void setBirth(Date birth) {
+        this.birth = birth;
+    }
 
     public Long getId() {
         return id;
@@ -151,9 +181,11 @@ public class User {
 
     }
 
+    public String getLicence() {
+        return licence;
+    }
 
-
-
-
-
+    public void setLicence(String licence) {
+        this.licence = licence;
+    }
 }

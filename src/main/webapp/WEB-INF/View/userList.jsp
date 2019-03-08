@@ -29,6 +29,8 @@
         <th><h1>Imię</h1></th>
         <th><h1>Nazwisko</h1></th>
         <th><h1>E-Mail</h1></th>
+        <th><h1>Płeć</h1></th>
+        <th><h1>Data urodzenia</h1></th>
         <th><h1>Data utworzenia</h1></th>
         <%--<th>Kursy</th>--%>
         <th><h1>Akcja</h1></th>
@@ -41,7 +43,9 @@
     <td>${users.firstName}</td>
     <td>${users.lastName}</td>
     <td>${users.email}</td>
-    <td>${users.created}</td>
+    <td>${users.gender}</td>
+    <td>${users.birth}</td>
+        <td>${users.created}</td>
     <%--<td>${users.activities}</td>--%>
 
         <td>

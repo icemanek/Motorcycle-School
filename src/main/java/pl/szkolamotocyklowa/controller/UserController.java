@@ -52,7 +52,7 @@ public class UserController {
 
         model.addAttribute("user", new User());
 
-        return "user";
+        return "register_user";
 
     }
 
@@ -67,11 +67,11 @@ public class UserController {
         if (user1 != null ) {
             bindingResult.rejectValue("email","error.email","Jest juz taki email w bazie! Kliknij 'Zaloguj sie'");
 
-            return "user";
+            return "register_user";
 
         } else if(bindingResult.hasErrors()) {
 
-            return "user";
+            return "register_user";
 
         }
 
@@ -93,7 +93,7 @@ public class UserController {
         User user = userRepository.findUserById(id);
         model.addAttribute("user", user);
 
-        return "user";
+        return "register_user";
     }
 
     @PostMapping("/update/{id}")
