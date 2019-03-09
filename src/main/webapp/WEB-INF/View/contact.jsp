@@ -11,30 +11,30 @@
     <title>Kontakt</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/kontakt.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
 </head>
 <body>
 <%@ include file="parts/header.jsp" %>
-
+<center>
 <div class="content">
 <div class="col-md-4">
     <h5>Informacje</h5>
     <dl class="contact-list">
         <dt>Adres:</dt>
-        <dd>00-000 Domek ul. Szkolna 5</dd>
+        <dd> <i class="fas fa-map-marker-alt"></i> 00-000 Domek ul. Szkolna 5</dd>
     </dl>
     <dl class="contact-list">
-        <dt>email:</dt>
-        <dd><a href="mailto:#">emil_sankowski@tlen.pl</a></dd>
+        <dt>Email:</dt>
+        <dd> <i class="fas fa-envelope"></i> emil_sankowski@tlen.pl</dd>
     </dl>
     <dl class="contact-list">
         <dt>Telefon:</dt>
-        <dd><a href="tel:#">678 564 737</a>
-        </dd>
+        <dd> <i class="fas fa-phone-volume"></i> 678 564 737</dd>
     </dl>
 </div>
 </div>
-
+</center>
 
 <%@ include file="parts/footer.jsp" %>
 </body>

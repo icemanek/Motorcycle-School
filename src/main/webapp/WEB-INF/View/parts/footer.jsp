@@ -10,6 +10,8 @@
 <head>
 
     <link href="../css/foot.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
 </head>
 <body id="body" class="light-mode">
 
@@ -23,30 +25,23 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <h5>Informacje</h5>
                 <dl class="contact-list">
                     <dt>Adres:</dt>
-                    <dd>00-000 Domek ul. Szkolna 5</dd>
+                    <dd> <i class="fas fa-map-marker-alt"></i> 00-000 Domek ul. Szkolna 5</dd>
                 </dl>
                 <dl class="contact-list">
                     <dt>Email:</dt>
-                    <dd><a href="mailto:#">emil_sankowski@tlen.pl</a></dd>
+                    <dd> <i class="fas fa-envelope"></i> emil_sankowski@tlen.pl</dd>
                 </dl>
                 <dl class="contact-list">
                     <dt>Telefon:</dt>
-                    <dd><a href="tel:#">678 564 737</a>
-                    </dd>
+                    <dd> <i class="fas fa-phone-volume"></i> 678 564 737</dd>
                 </dl>
             </div>
-            <%--<div class="col-md-4 col-xl-3">--%>
-                <%--<h5>Linki</h5>--%>
-                <%--<ul class="nav-list">--%>
-                    <%--<li><a href="/onas">O Nas</a></li>--%>
-                    <%--<li><a href="/kursy/all">Kursy</a></li>--%>
-                    <%--<li><a href="/drive">Jak dojechać</a></li>--%>
-                    <%--<li><a href="/contact">kontakt</a></li>--%>
-                <%--</ul>--%>
-            <%--</div>--%>
+            <div class="col-md-4 col-xl-3">
+                <h5>Informacje</h5>
+                Szkoła doszkalania jazdy na motocyklu
+            </div>
         </div>
     </div>
 </footer>

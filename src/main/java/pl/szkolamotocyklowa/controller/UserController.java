@@ -59,17 +59,24 @@ public class UserController {
 
 
     @PostMapping("/add")
-    public String addUser(@ModelAttribute @Valid User user, @ModelAttribute Activities activities, BindingResult bindingResult) {
+    public String addUser(@ModelAttribute @Valid User user, BindingResult bindingResult) {
 
 
        User user1 =  userRepository.findByEmail(user.getEmail());
+        User user2 = userRepository.findByUsername(user.getUsername());
 
         if (user1 != null ) {
-            bindingResult.rejectValue("email","error.email","Jest juz taki email w bazie! Kliknij 'Zaloguj sie'");
+            bindingResult.rejectValue("email", "error.email", "Jest juz taki email w bazie!");
 
             return "register_user";
 
-        } else if(bindingResult.hasErrors()) {
+        } if(user2 != null) {
+
+            bindingResult.rejectValue("username","username.error","Ta nazwa jest w użyciu");
+
+            return "register_user";
+        }
+        else if(bindingResult.hasErrors()) {
 
             return "register_user";
 

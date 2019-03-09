@@ -20,6 +20,7 @@ public class ValidationController {
     private Validator validator;
 
     @GetMapping("/validate")
+
     public String validate(Model model) {
         User user = new User();
         Set<ConstraintViolation<User>> errors = validator.validate(user);

@@ -1,22 +1,19 @@
 package pl.szkolamotocyklowa.app.User;
 
 
-
-import javafx.scene.control.DatePicker;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Type;
 import org.mindrot.jbcrypt.BCrypt;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.format.annotation.DateTimeFormat;
-import sun.util.calendar.BaseCalendar;
-
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Date;
+import java.util.Calendar;
 
 
 @Entity
@@ -30,18 +27,19 @@ public class User {
 
     @NotBlank
     @Column(unique = true)
-    @Size(min = 4)
+    @Size(min = 3)
     private String username;
 
     @NotBlank
-    @Size(min = 4)
+    @Size(min = 3)
     private String firstName;
 
     @NotBlank
-    @Size(min = 4)
+    @Size(min = 2)
     private String lastName;
 
     @NotBlank
+    @Size(min = 8)
     private String password;
 
     @NotEmpty
@@ -55,20 +53,18 @@ public class User {
     @CreationTimestamp
     private LocalDate created;
 
-    @Temporal(TemporalType.DATE)
-    private Date birth;
 
     private String gender;
 
     private String licence;
 
-    @Transient
-    private String fullName;
+
+    @Column
+    @Type(type="date")
+    private Date birth;
 
     private String role = "user";
 
-    public User() {
-    }
 
     public String getRole() {
         return role;
@@ -130,13 +126,6 @@ public class User {
         this.email = email;
     }
 
-    public String getFullName() {
-        return firstName + " " + lastName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
 
     public LocalDate getCreated() {
         return created;

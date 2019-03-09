@@ -23,6 +23,7 @@
 <h1 class="header">Dodaj instruktora</h1>
 
 <form:form method="post" modelAttribute="instructor">
+
     <label for="firstNameId">Imię</label>
     <form:input type="text" path="firstNameInstructor" id="firstNameId"/>
     <form:errors path="firstNameInstructor" element="div"/>
@@ -35,11 +36,12 @@
     <label for="emailId">E-Mail</label>
     <form:input type="text" path="emailInstructor" id="emailId"/>
     <form:errors path="emailInstructor" element="div"/>
-</form:form>
+
     <br>
     <button class="button" type="submit" name="light-mode"><span>Zapisz</span></button>
     <button class="button" name="light-mode" onclick="window.location.href='/'"><span>Strona główna </span></button>
 </div>
+    </form:form>
 </center>
 <%@ include file="parts/footer.jsp" %>
 </body>

@@ -7,8 +7,8 @@
     <link href="../css/kursanci.css" rel="stylesheet">
 
     <script>
-        function confirmDelete(id, fullName) {
-            if (confirm("Czy na pewno usunac użytkownika \"" + fullName + "\"")) {
+        function confirmDelete(id, username) {
+            if (confirm("Czy na pewno usunąć użytkownika \"" + username + "\"")) {
                 window.location.href = "/user/delete/" + id;
             }
         }
@@ -26,11 +26,13 @@
 <table class="container">
     <thead>
     <tr>
+        <th><h1>Login</h1></th>
         <th><h1>Imię</h1></th>
         <th><h1>Nazwisko</h1></th>
         <th><h1>E-Mail</h1></th>
         <th><h1>Płeć</h1></th>
         <th><h1>Data urodzenia</h1></th>
+        <th><h1>Prawo jazdy</h1></th>
         <th><h1>Data utworzenia</h1></th>
         <%--<th>Kursy</th>--%>
         <th><h1>Akcja</h1></th>
@@ -40,19 +42,20 @@
     <%--<tr class="row-content">--%>
 <c:forEach var="users" items="${users}">
     <tr>
+        <td>${users.username}</td>
     <td>${users.firstName}</td>
     <td>${users.lastName}</td>
     <td>${users.email}</td>
     <td>${users.gender}</td>
     <td>${users.birth}</td>
+    <td>${users.licence}</td>
         <td>${users.created}</td>
     <%--<td>${users.activities}</td>--%>
 
         <td>
-            <a class="btn btn-danger edit" href="#" onclick="confirmDelete(${users.id}, '${users.fullName}')">Usuń
+            <a class="btn btn-danger edit" href="#" onclick="confirmDelete(${users.id}, '${users.username}')">Usuń
                 <i class="fa fa-trash" aria-hidden="true"></i> </a>
             &nbsp
-
 
             <a class="btn btn-info edit" href="/user/update/${users.id}">Edytuj
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a>
