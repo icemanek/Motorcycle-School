@@ -12,7 +12,7 @@
 </head>
 
 <body>
-<form:form modelAttribute="login">
+<form:form modelAttribute="login" method="post" action="/login">
 
 <a href="/" >Strona Główna</a>
 <div class="container">
@@ -43,7 +43,7 @@
                         <div class="row align-items-center remember">
                             <input type="checkbox">Zapamiętaj mnie
                         </div>
-
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                         <div class="form-group">
                             <input type="submit" value="Zaloguj" class="btn float-right login_btn"/></div>
                     </form></div>
