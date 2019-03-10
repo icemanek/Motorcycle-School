@@ -17,16 +17,33 @@
     <link rel="canonical" href="https://codepen.io/frytyler/pen/EGdtg" />
 
     <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'><script src='https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js'></script>
+    <script type="text/javascript">
+        function validate() {
 
+            if (document.f.username.value == "") {
+                alert("Login jest wymagany");
+                document.f.username.focus();
+                return false;
+            }
+            if (document.f.password.value == "") {
+                alert("Hasło jest wymagane");
+                document.f.password.focus();
+                return false;
+            }
+        }
+    </script>
 </head>
 <body id="body" class="light-mode">
 
-<form:form modelAttribute="login" method="post" action="/login">
+<a href="/"> Strina główna </a>
 
-<button class="btn-liquid"><a href="/"> Strona główna</a></button>
+
+<form:form modelAttribute="login" method="post" name="f">
 
                 <div class="login">
+
                     <h1>Logowanie</h1>
+
 
                    <label for="usernameId" name="u">
                             <form:input type="text" path="username" id="usernameId" class="form-control" placeholder="Login" required=""/>
@@ -42,8 +59,12 @@
 
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 
-                            <button  type="submit" class="btn-liquid" >Zaloguj Się</button>
+                            <button  type="submit" class="btn-liquid" onclick="validate()" >Zaloguj Się</button>
+                     </label>
+
+                     <p>Nie masz konta? <a href="/user/add">Zarejestruj się!</a></p>
+                </div>
                                 </form:form>
-</div>
+
 </body>
 </html>

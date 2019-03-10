@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.szkolamotocyklowa.app.User.User;
 import pl.szkolamotocyklowa.repository.UserRepository;
 
+import javax.validation.Valid;
+
 
 @Controller
 public class LoginController {
@@ -17,10 +19,16 @@ public class LoginController {
     private UserRepository userRepository;
 
 
-  @RequestMapping("/login")
-    public String login(@ModelAttribute ("login") User user, Model model, BindingResult result) {
+  @RequestMapping(value = "/login", method = RequestMethod.POST)
+    public String login(@Valid @ModelAttribute ("login") User user, Model model, BindingResult result, @RequestParam(value = "error") String error) {
 
+      if(error != null){
+
+          result.rejectValue("error", "error.username", "bledny login");
+      }
         if (result.hasErrors()) {
+
+
             return "login";
         }
         User userDb = userRepository.findByUsername(user.getUsername());
@@ -36,6 +44,14 @@ public class LoginController {
                return "redirect:/welcome";
     }
 
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    public String showLogin(Model model){
+
+      User user = new User();
+        model.addAttribute("login", user);
+
+      return "login";
+    }
 
     @RequestMapping( "/welcome")
     public String welcome() {

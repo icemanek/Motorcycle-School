@@ -227,8 +227,8 @@
 
     <input type="submit" class="btn-liquid" value="Zarejestruj">
 
-    Masz już konto?
-    <button class="btn-liquid" onclick="window.location.href='/login'">Zaloguj Się</button>
+    <p>Masz konto? <a href="/login">Zaloguj się!</a></p>
+
 </form:form>
 </center>
 
