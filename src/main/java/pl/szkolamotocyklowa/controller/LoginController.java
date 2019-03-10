@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.szkolamotocyklowa.app.User.User;
 import pl.szkolamotocyklowa.repository.UserRepository;
 
-import javax.validation.Valid;
 
 @Controller
 public class LoginController {
@@ -27,7 +26,10 @@ public class LoginController {
         User userDb = userRepository.findByUsername(user.getUsername());
         boolean isLoggged = userDb != null && BCrypt.checkpw(user.getPassword(), userDb.getPassword());
         if (!isLoggged) {
+
+
             model.addAttribute("loginFailed", true);
+
             return "login";
         }
 
@@ -36,10 +38,9 @@ public class LoginController {
 
 
     @RequestMapping( "/welcome")
-    public String welcome(Model model) {
+    public String welcome() {
         return "success";
     }
-
 
 
 }

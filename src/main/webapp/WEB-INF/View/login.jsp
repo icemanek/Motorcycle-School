@@ -3,65 +3,47 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/main.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
-          integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
-</head>
+    <title> Zaloguj się </title>
 
-<body>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/log.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+    <script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script>
+    <script src='//production-assets.codepen.io/assets/editor/live/console_runner-079c09a0e3b9ff743e39ee2d5637b9216b3545af0de366d4b9aad9dc87e26bfd.js'></script>
+    <script src='//production-assets.codepen.io/assets/editor/live/events_runner-73716630c22bbc8cff4bd0f07b135f00a0bdc5d14629260c3ec49e5606f98fdd.js'></script>
+    <script src='//production-assets.codepen.io/assets/editor/live/css_live_reload_init-2c0dc5167d60a5af3ee189d570b1835129687ea2a61bee3513dee3a50c115a77.js'></script>
+   <meta name="robots" content="noindex"><link rel="shortcut icon" type="image/x-icon" href="//production-assets.codepen.io/assets/favicon/favicon-8ea04875e70c4b0bb41da869e81236e54394d63638a1ef12fa558a4a835f1164.ico" />
+    <link rel="mask-icon" type="" href="//production-assets.codepen.io/assets/favicon/logo-pin-f2d2b6d2c61838f7e76325261b7195c27224080bc099486ddd6dccb469b8e8e6.svg" color="#111" />
+    <link rel="canonical" href="https://codepen.io/frytyler/pen/EGdtg" />
+
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css'><script src='https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js'></script>
+
+</head>
+<body id="body" class="light-mode">
+
 <form:form modelAttribute="login" method="post" action="/login">
 
-<a href="/" >Strona Główna</a>
-<div class="container">
-    <div class="d-flex justify-content-center h-100">
-        <div class="card">
-            <div class="card-header">
-                <h3>Logowanie</h3>
-                <div class="card-body">
-                    <form>
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
+<button class="btn-liquid"><a href="/"> Strona główna</a></button>
 
-                            </div>
-                            <label for="usernameId">
-                            <form:input type="text" path="username" id="usernameId" class="form-control" placeholder="Login"/>
+                <div class="login">
+                    <h1>Logowanie</h1>
+
+                   <label for="usernameId" name="u">
+                            <form:input type="text" path="username" id="usernameId" class="form-control" placeholder="Login" required=""/>
                             <form:errors path="username" element="div" cssClass="error"/>
                             </label>
-                        </div>
 
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
-                            </div>
-                            <label for="passwordId">
-                            <form:input type="password" path="password" id="passwordId" class="form-control" placeholder="Hasło"/>
+
+
+                     <label for="passwordId" name="p">
+                            <form:input type="password" path="password" id="passwordId" class="form-control" placeholder="Hasło" required=""/>
                             <form:errors path="password" element="div" cssClass="error"/>
-                        </div>
-                        <div class="row align-items-center remember">
-                            <input type="checkbox">Zapamiętaj mnie
-                        </div>
+
+
                         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
-                        <div class="form-group">
-                            <input type="submit" value="Zaloguj" class="btn float-right login_btn"/></div>
-                    </form></div>
-            </div>
-            <div class="card-footer">
-                <div class="d-flex justify-content-center links">
-                    Nie masz konta?<a href="/user/add">Zrejestruj się</a></div>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <a href="#">Zapomniałeś hasła?</a>
-                </div>
-            </div>
 
-        </div>
-</div>
-    </div>
-
-    </form:form>
+                            <button  type="submit" class="btn-liquid" >Zaloguj Się</button>
+                                </form:form>
 </div>
 </body>
 </html>
