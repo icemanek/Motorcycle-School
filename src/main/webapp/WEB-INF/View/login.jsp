@@ -63,6 +63,7 @@
                      </label>
 
                      <p>Nie masz konta? <a href="/user/add">Zarejestruj się!</a></p>
+                    <p>Jesteś instruktorem?<a href="/instructor/add">Kliknij tutaj</a></p>
                 </div>
                                 </form:form>
 

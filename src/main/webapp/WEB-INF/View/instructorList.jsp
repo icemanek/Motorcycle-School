@@ -30,11 +30,12 @@
 <table class="container">
 <thead>
     <tr>
+        <th><h1>Login</h1></th>
         <th><h1>Imię</h1></th>
         <th><h1>Nazwisko</h1></th>
         <th><h1>E-Mail</h1></th>
 <c:if test="${pageContext.request.userPrincipal.name != null}">
-    <c:if test="${pageContext.request.isUserInRole('ADMIN')}">
+    <c:if test="${pageContext.request.isUserInRole('admin')}">
         <th><h1>Akcja</h1></th>
     </c:if>
 </c:if>
@@ -43,6 +44,7 @@
     <tbody>
     <c:forEach var="instructor" items="${instructors}">
     <tr class="row-content">
+            <td>${instructor.loginInstructor}</td>
             <td>${instructor.firstNameInstructor}</td>
             <td>${instructor.lastNameInstructor}</td>
             <td>${instructor.emailInstructor}</td>
@@ -64,11 +66,14 @@
 
 <c:if test="${pageContext.request.userPrincipal.name != null}">
     <c:if test="${pageContext.request.isUserInRole('admin')}">
+
     <button class="button" name="light-mode" onclick="window.location.href='/instructor/add'"><span>Dodaj instruktora </span></button>
+
     </c:if>
 </c:if>
 </div>
 </center>
+
 <%@ include file="parts/footer.jsp" %>
 </body>
 </html>

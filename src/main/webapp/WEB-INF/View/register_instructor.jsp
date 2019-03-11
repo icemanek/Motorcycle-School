@@ -1,11 +1,19 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%--
+  Created by IntelliJ IDEA.
+  User: emil
+  Date: 26.11.18
+  Time: 13:46
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Dodaj użytkownika</title>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/register.css" rel="stylesheet">
 
+    <title>Dodaj Instruktora</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/instruktor.css" rel="stylesheet">
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
@@ -174,67 +182,45 @@
         submit.addEventListener('click', validate);
         form.addEventListener('submit', validate);
     </script>
+
 </head>
 <%@ include file="parts/header.jsp" %>
-
-
 <body id="body" class="light-mode">
-
 <center>
-<form:form method="post" modelAttribute="user" id="registration" accept-charset="UTF-8">
+<div class="content">
+<h1 class="header">Zarejestruj</h1>
 
-    <label for="usernameId"></label>
-    <form:input type="text" path="username" id="usernameId" placeholder="Wpisz login" title="tylko litery i cyfry bez znaków specjalnych" pattern="^[a-zA-Z0-9]+$" class="form-control" maxlength="100" minlength="5" required="" />
-    <form:errors path="username" element="div" cssClass="error"/>
+    <form:form method="post" modelAttribute="instructor" id="registration" >
 
+    <label for="firstNameId"></label>
+    <form:input type="text" path="firstNameInstructor" id="firstNameId" placeholder="Wpisz swoje imię" class="form-control" minlength="3" required=""  />
+    <form:errors path="firstNameInstructor" element="div"/>
+
+    <label for="lastNameId"></label>
+    <form:input type="text" path="lastNameInstructor" id="lastNameId" placeholder="Wpisz swoje nazwisko" class="form-control"  minlength="2" required="" />
+    <form:errors path="lastNameInstructor" element="div"/>
+
+    <label for="loginId"></label>
+    <form:input type="text" path="loginInstructor" id="loginId"  placeholder="Wpisz login" title="tylko litery i cyfry bez znaków specjalnych" pattern="^[a-zA-Z0-9]+$" class="form-control" maxlength="100" minlength="5" required="" />
+    <form:errors path="loginInstructor" element="div"/>
 
     <label for="passwordId"></label>
     <form:input type="password" path="password" title="Musi zawierać jedną mała literę, jedną wielką, jedną cyfrę i jeden znak specjalny" placeholder="Ustaw hasło" id="passwordId" class="form-control" maxlength="100" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required="" />
     <form:errors path="password" element="div" cssClass="error"/>
 
-    <label for="firstNameId"></label>
-    <form:input type="text" path="firstName" id="firstNameId" placeholder="Wpisz swoje imię" class="form-control" minlength="3" required=""  />
-    <form:errors path="firstName" element="div" cssClass="error"/>
-
-    <label for="lastNameId"></label>
-    <form:input type="text" path="lastName" id="lastNameId" placeholder="Wpisz swoje nazwisko" class="form-control"  minlength="2" required="" />
-    <form:errors path="lastName" element="div" cssClass="error"/>
 
     <label for="emailId"></label>
-    <form:input type="text" path="email" id="emailId" class="form-control" placeholder="Wpisz swój email" maxlength="100" minlength="2" required="" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" />
-    <form:errors path="email" element="div" cssClass="error"/>
+    <form:input type="text" path="emailInstructor" id="emailId" class="form-control" placeholder="Wpisz swój email" maxlength="100" minlength="2" required="" pattern="^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$" />
+    <form:errors path="emailInstructor" element="div"/>
 
-    <label for="genderId"></label>
-    <form:select path="gender" id="genderId" class="form-control" >
-        <form:option value="">Płeć</form:option>
-        <form:option value="M">Mężczyzna</form:option>
-        <form:option value="K">Kobieta</form:option>
-</form:select>
-
-    <label for="licenceId"></label>
-    <form:select path="licence" id="licenceId" class="form-control" >
-        <form:option value="" >Czy posiadasz prawo jazdy kat A?</form:option>
-        <form:option  value="Tak">Tak</form:option>
-        <form:option disabled="true" value="Nie">Nie-jeśli nie posiadasz nie możesz się zarejestrować</form:option>
-    </form:select>
-
-    <label for="dateId"></label>
-    <form:input path="birth" type="date" id="dateId" value="2001-01-01" max="2001-01-01" required="" />
-
-    <form:hidden path="created"></form:hidden>
+    <form:hidden path="createdInstructor"></form:hidden>
 
     <br>
-
     <input type="submit" class="btn-liquid" value="Zarejestruj">
 
-    <p>Masz konto? <a href="/login">Zaloguj się!</a></p>
-    <p>Jesteś instruktorem?<a href="/instructor/add">Kliknij tutaj</a></p>
-
-</form:form>
+</div>
+    </form:form>
 </center>
-
-
 <%@ include file="parts/footer.jsp" %>
-
 </body>
 </html>

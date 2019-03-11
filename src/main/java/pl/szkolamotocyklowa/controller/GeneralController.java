@@ -3,6 +3,7 @@ package pl.szkolamotocyklowa.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class GeneralController {
@@ -32,6 +33,12 @@ public class GeneralController {
     public String contact(){
 
             return "contact";
+        }
+
+        @RequestMapping("/instructor")
+        public String instructor(){
+
+            return "register_instructor";
         }
 
 

@@ -30,6 +30,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authoritiesByUsernameQuery("SELECT username, password, enabled FROM User where username=?");
 
         auth.inMemoryAuthentication().withUser("emil").password(passwordEncoder().encode("emilPass")).roles("admin");
+
     }
 
     @Override

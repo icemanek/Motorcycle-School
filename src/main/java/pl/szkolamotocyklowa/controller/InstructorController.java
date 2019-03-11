@@ -6,12 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.szkolamotocyklowa.app.Instructor.Instructor;
-import pl.szkolamotocyklowa.app.activities.Activities;
 import pl.szkolamotocyklowa.repository.InstructorRepository;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 @Controller
@@ -30,7 +27,7 @@ public class InstructorController {
 
         model.addAttribute("instructor", new Instructor());
 
-        return "instructor";
+        return "register_instructor";
 
     }
 
@@ -39,7 +36,7 @@ public class InstructorController {
 
         if (bindingResult.hasErrors()) {
 
-            return "instructor";
+            return "register_instructor";
         } else {
             instructorRepository.save(instructor);
 
@@ -59,7 +56,7 @@ public class InstructorController {
         Instructor instructor= instructorRepository.findInstructorById(id);
         model.addAttribute("instructor", instructor);
 
-        return "instructor";
+        return "register_instructor";
     }
 
     @PostMapping("/update/{id}")
