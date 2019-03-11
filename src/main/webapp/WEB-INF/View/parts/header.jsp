@@ -72,7 +72,7 @@
 
         <form class="login_btn" action="${logoutUrl}" method="post">
 
-                <input class="login_btn" type="submit" value="Wyloguj się" />
+                <input type="submit" value="Wyloguj się" />
 
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form>
