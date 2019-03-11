@@ -35,7 +35,11 @@
         <th><h1>Prawo jazdy</h1></th>
         <th><h1>Data utworzenia</h1></th>
         <%--<th>Kursy</th>--%>
+<c:if test="${pageContext.request.userPrincipal.name != null}">
+    <c:if test="${pageContext.request.isUserInRole('admin')}">
         <th><h1>Akcja</h1></th>
+    </c:if>
+</c:if>
     </tr>
     </thead>
     <tbody>
@@ -52,6 +56,7 @@
         <td>${users.created}</td>
     <%--<td>${users.activities}</td>--%>
         <c:if test="${pageContext.request.userPrincipal.name != null}">
+            <c:if test="${pageContext.request.isUserInRole('admin')}">
         <td>
             <a class="btn btn-danger edit" href="#" onclick="confirmDelete(${users.id}, '${users.username}')">Usuń
                 <i class="fa fa-trash" aria-hidden="true"></i> </a>
@@ -61,7 +66,10 @@
                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i> </a>
 
         </td>
+            </c:if>
+        </c:if>
     </tr>
+
 
     </c:forEach>
 </table>

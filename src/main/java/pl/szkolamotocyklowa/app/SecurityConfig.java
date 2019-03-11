@@ -29,6 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .usersByUsernameQuery("SELECT username, password, enabled FROM User where username=?")
                 .authoritiesByUsernameQuery("SELECT username, password, enabled FROM User where username=?");
 
+        auth.inMemoryAuthentication().withUser("emil").password(passwordEncoder().encode("emilPass")).roles("admin");
     }
 
     @Override
@@ -36,7 +37,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.
     authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/login/**").hasRole("USER").and()
                 .formLogin()
                 .loginPage("/login")

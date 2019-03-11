@@ -34,10 +34,11 @@
             <li class="nav-list-item">
                 <a href="/" class="nav-link"> <i class="fas fa-home"></i> Home</a>
             </li>
-
+<c:if test="${pageContext.request.userPrincipal.name != null}">
             <li class="nav-list-item">
                 <a href="/instructor/all" class="nav-link"> <i class="fas fa-chalkboard-teacher"></i> Nauczyciele</a>
             </li>
+</c:if>
             <li class="nav-list-item">
                 <a href="/onas" class="nav-link"> <i class="fas fa-building"></i> O Nas</a>
             </li>
@@ -47,9 +48,11 @@
             <li class="nav-list-item">
                 <a href="/contact" class="nav-link"> <i class="fas fa-file-signature"></i> Kontakt</a>
             </li>
+<c:if test="${pageContext.request.userPrincipal.name != null}">
             <li class="nav-list-item">
                 <a href="/user/all" class="nav-link"> <i class="fas fa-users"></i> Kursanci</a>
             </li>
+</c:if>
             <li class="nav-list-item">
                 <a href="/kursy/all" class="nav-link"> <i class="fas fa-shopping-cart"></i> Kursy</a>
             </li>
@@ -66,20 +69,23 @@
     <li class="login_btn">
         <a  class="nav-link"> <i class="fas fa-user"></i>Witaj <c:out value="${pageContext.request.remoteUser}"/></a>
     </li>
-    <li class="login_btn">
 
-            <c:url var="logoutUrl" value="/logout"/>
-
-        <form class="login_btn" action="${logoutUrl}" method="post">
-
-                <input type="submit" value="Wyloguj się" />
-
-                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            </form>
-</li>
             <li class="signup_btn">
                 <a href="/user/add" class="nav-link"> <i class="fas fa-shopping-basket"></i> Koszyk</a>
             </li>
+    <li class="nav-link">
+
+        <c:url var="logoutUrl" value="/logout"/>
+
+        <form class="login_btn" id="logout" action="${logoutUrl}" method="post">
+
+    <li class="login_btn">
+        <a href="javascript:document.getElementById('logout').submit()" class="nav-link">Wyloguj</a>
+    </li>
+
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        </form>
+
 
 </c:if>
             <div class="onoffswitch">
@@ -90,7 +96,6 @@
                 </label>
             </div>
 
-            </li>
         </ul>
     </nav>
     </body>
