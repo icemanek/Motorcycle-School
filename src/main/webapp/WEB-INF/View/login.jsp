@@ -38,7 +38,7 @@
 <a href="/"> Strina główna </a>
 
 
-<form:form modelAttribute="login" method="post" name="f">
+<form:form modelAttribute="login" method="post" action="/spring_security_check" name="f">
 
                 <div class="login">
 
@@ -57,7 +57,7 @@
                             <form:errors path="password" element="div" cssClass="error"/>
 
 
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
                             <button  type="submit" class="btn-liquid" onclick="validate()" >Zaloguj Się</button>
                      </label>

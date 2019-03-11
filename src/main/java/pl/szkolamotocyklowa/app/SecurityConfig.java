@@ -33,10 +33,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
+        http.
+    authorizeRequests()
+                .antMatchers("/").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")
-                .antMatchers("login/**").hasRole("USER")
-                .and().formLogin().loginPage("/login").failureUrl("/login?error").successForwardUrl("/welcome");
+                .antMatchers("/login/**").hasRole("USER").and()
+                .formLogin()
+                .loginPage("/login")
+                .loginProcessingUrl("/spring_security_check")
+                .usernameParameter("username")
+                .passwordParameter("password")
+                .permitAll();
+
 
         http.logout().logoutSuccessUrl("/");
     }

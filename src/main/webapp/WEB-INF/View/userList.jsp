@@ -51,7 +51,7 @@
     <td>${users.licence}</td>
         <td>${users.created}</td>
     <%--<td>${users.activities}</td>--%>
-
+        <c:if test="${pageContext.request.userPrincipal.name != null}">
         <td>
             <a class="btn btn-danger edit" href="#" onclick="confirmDelete(${users.id}, '${users.username}')">Usuń
                 <i class="fa fa-trash" aria-hidden="true"></i> </a>

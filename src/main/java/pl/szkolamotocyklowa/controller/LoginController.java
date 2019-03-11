@@ -19,7 +19,7 @@ public class LoginController {
     private UserRepository userRepository;
 
 
-  @RequestMapping(value = "/login", method = RequestMethod.POST)
+  @RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.PUT})
     public String login(@Valid @ModelAttribute ("login") User user, Model model, BindingResult result, @RequestParam(value = "error") String error) {
 
       if(error != null){
@@ -41,10 +41,10 @@ public class LoginController {
             return "login";
         }
 
-               return "redirect:/welcome";
+               return "home";
     }
 
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+    @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.PUT})
     public String showLogin(Model model){
 
       User user = new User();
@@ -52,11 +52,5 @@ public class LoginController {
 
       return "login";
     }
-
-    @RequestMapping( "/welcome")
-    public String welcome() {
-        return "success";
-    }
-
 
 }

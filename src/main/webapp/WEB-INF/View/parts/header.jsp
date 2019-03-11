@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: emil
@@ -52,15 +53,35 @@
             <li class="nav-list-item">
                 <a href="/kursy/all" class="nav-link"> <i class="fas fa-shopping-cart"></i> Kursy</a>
             </li>
+            <c:if test="${pageContext.request.userPrincipal.name == null}">
             <li class="login_btn">
                 <a href="/login" class="nav-link"> <i class="fas fa-user"></i> Zaloguj się</a>
             </li>
             <li class="signup_btn">
                 <a href="/user/add" class="nav-link"> <i class="fas fa-user-plus"></i> Rejestracja</a>
             </li>
+            </c:if>
+<c:if test="${pageContext.request.userPrincipal.name != null}">
+
+    <li class="login_btn">
+        <a  class="nav-link"> <i class="fas fa-user"></i>Witaj <c:out value="${pageContext.request.remoteUser}"/></a>
+    </li>
+    <li class="login_btn">
+
+            <c:url var="logoutUrl" value="/logout"/>
+
+        <form class="login_btn" action="${logoutUrl}" method="post">
+
+                <input class="login_btn" type="submit" value="Wyloguj się" />
+
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            </form>
+</li>
             <li class="signup_btn">
                 <a href="/user/add" class="nav-link"> <i class="fas fa-shopping-basket"></i> Koszyk</a>
             </li>
+
+</c:if>
             <div class="onoffswitch">
                 <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox" id="myonoffswitch" onclick="toggleDarkLight()">
                 <label class="onoffswitch-label" for="myonoffswitch">
