@@ -47,9 +47,6 @@ public class User {
     @Column(unique = true)
     private String email;
 
-
-    private int enabled = 1;
-
     @CreationTimestamp
     private LocalDate created;
 
@@ -65,6 +62,7 @@ public class User {
 
     private String role = "user";
 
+  private int enabled = 1;
 
     public String getRole() {
         return role;
@@ -159,15 +157,13 @@ public class User {
 //        this.activities = activities;
 //    }
 
-    public int getEnabled() {
 
+    public int getEnabled() {
         return enabled;
     }
 
     public void setEnabled(int enabled) {
-
         this.enabled = enabled;
-
     }
 
     public String getLicence() {

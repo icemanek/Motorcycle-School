@@ -12,19 +12,14 @@
 <head>
 
 
-    <title>Szkoła motocyklowa</title>
+    <title>Rejestracja pomyślna</title>
 
 
 </head>
 <body>
 <div class="content">
-ZALOGOWALES SIE!
 
-Welcome <c:forEach var="users" items="${user}">
-    <tr>
-    <td>${users.firstName}</td>
-    </tr>
-</c:forEach>
+    <span>Email poszedł na adres ${pageContext.request.userPrincipal.email}</span>
 
 
 <br>
