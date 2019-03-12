@@ -22,7 +22,6 @@
 
         <div class="alert" role="alert">
             <button class="close-alert" data-dismiss="alert" aria-label="close">
-                <span aria-hidden="true">x</span>
             </button>
             <strong>${message}</strong>
 

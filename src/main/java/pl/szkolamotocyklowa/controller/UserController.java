@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import pl.szkolamotocyklowa.app.EmailService;
+import pl.szkolamotocyklowa.app.EmailServiceImpl;
 import pl.szkolamotocyklowa.app.User.User;
 import pl.szkolamotocyklowa.app.activities.Activities;
 import pl.szkolamotocyklowa.repository.ActivitiesRepository;
@@ -23,6 +25,8 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
+    @Autowired
+    private EmailService emailService;
 
     @Autowired
     Validator validator;
@@ -80,7 +84,8 @@ public class UserController {
 
         } else {
 
-
+            emailService.sendSimpleMessage(user.getEmail(), "Registration", "Welcome " + user.getUsername() +
+                    ",\n" + "\nYou have succesfully joined us. Have fun!");
             model.addAttribute("message", "Pomyślnie utworzyłeś konto!");
             userRepository.save(user);
 

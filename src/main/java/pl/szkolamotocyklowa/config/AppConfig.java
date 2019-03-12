@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -25,6 +27,7 @@ import pl.szkolamotocyklowa.app.SecurityConfig;
 import javax.persistence.EntityManagerFactory;
 import javax.validation.Validator;
 import java.util.Locale;
+import java.util.Properties;
 
 @Import({SecurityConfig.class})
 @Configuration
@@ -36,6 +39,26 @@ import java.util.Locale;
 public class AppConfig extends WebMvcConfigurerAdapter {
     @Autowired
     private Environment env;
+
+
+    @Bean
+    public JavaMailSender getJavaMailSender(){
+
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(587);
+
+        mailSender.setUsername("icefarnek@gmail.com");
+        mailSender.setPassword("emil1210");
+
+        Properties properties = mailSender.getJavaMailProperties();
+        properties.put("mail.transport.protocol", "smtp");
+        properties.put("mail.smtp.auth", "true");
+        properties.put("mail.smtp.starttls.enable", "true");
+        properties.put("mail.debug", "true");
+
+        return mailSender;
+    }
 
     @Bean
     public ViewResolver viewResolver() {
