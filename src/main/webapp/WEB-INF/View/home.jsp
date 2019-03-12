@@ -28,7 +28,6 @@
 
         </div>
     </c:if>
-  
 
     <div class="content">
     <h1>Witamy na stronie doskonalenia nauki jazdy na motocyklu!</h1>

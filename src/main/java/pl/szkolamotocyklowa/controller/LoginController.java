@@ -41,7 +41,7 @@ public class LoginController {
             return "login";
         }
 
-        model.addAttribute("success", "zalogowałeś się!");
+        model.addAttribute("message", "zalogowałeś się!");
 
                return "home";
     }
