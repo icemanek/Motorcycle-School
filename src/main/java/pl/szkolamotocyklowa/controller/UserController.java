@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.szkolamotocyklowa.app.User.User;
 import pl.szkolamotocyklowa.app.activities.Activities;
 import pl.szkolamotocyklowa.repository.ActivitiesRepository;
@@ -13,9 +14,7 @@ import pl.szkolamotocyklowa.repository.UserRepository;
 
 import javax.validation.Valid;
 import javax.validation.Validator;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 @Controller
 @RequestMapping("/user")
@@ -28,21 +27,20 @@ public class UserController {
     @Autowired
     Validator validator;
 
-
     @Autowired
     ActivitiesRepository activitiesRepository;
 
-    @ModelAttribute("activities")
-    public Collection<Activities> kursy(){
-
-        List<Activities> kursy2 = new ArrayList<>();
-
-        kursy2.add(new Activities("Podstawowy"));
-        kursy2.add(new Activities("Rozszerzony"));
-        kursy2.add(new Activities("Premium"));
-
-        return kursy2;
-    }
+//    @ModelAttribute("activities")
+//    public Collection<Activities> kursy(){
+//
+//        List<Activities> kursy2 = new ArrayList<>();
+//
+//        kursy2.add(new Activities("Podstawowy"));
+//        kursy2.add(new Activities("Rozszerzony"));
+//        kursy2.add(new Activities("Premium"));
+//
+//        return kursy2;
+//    }
 
 
     // <----------------------------Dodawanie użytkownika------------------->
@@ -82,6 +80,8 @@ public class UserController {
 
         } else {
 
+
+            model.addAttribute("message", "Pomyślnie utworzyłeś konto!");
             userRepository.save(user);
 
 

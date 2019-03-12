@@ -62,7 +62,7 @@ public class User {
 
     private String role = "user";
 
-  private int enabled = 1;
+    private int enabled = 1;
 
     public String getRole() {
         return role;

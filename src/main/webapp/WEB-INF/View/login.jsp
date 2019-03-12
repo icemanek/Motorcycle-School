@@ -35,12 +35,23 @@
 </head>
 <body id="body" class="light-mode">
 
-<a href="/"> Strina główna </a>
+<a href="/"> Strona główna </a>
+
+
 
 
 <form:form modelAttribute="login" method="post" action="/spring_security_check" name="f">
 
                 <div class="login">
+
+                    <c:if test="${param.error != null}">
+
+                        <div class="error alert alert-danger">
+                            Nieprawidłowe dane!
+                        </div>
+
+                    </c:if>
+
 
                     <h1>Logowanie</h1>
 

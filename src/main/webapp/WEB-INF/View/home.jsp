@@ -18,6 +18,18 @@
 
 <body id="body" class="light-mode">
 <center>
+    <c:if test="${not empty message}">
+
+        <div class="alert" role="alert">
+            <button class="close-alert" data-dismiss="alert" aria-label="close">
+                <span aria-hidden="true">x</span>
+            </button>
+            <strong>${message}</strong>
+
+        </div>
+    </c:if>
+  
+
     <div class="content">
     <h1>Witamy na stronie doskonalenia nauki jazdy na motocyklu!</h1>
     <h2>Zapraszamy to zapoznania się z naszą ofertą </h2>

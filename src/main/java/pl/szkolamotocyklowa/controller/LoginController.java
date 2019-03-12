@@ -23,7 +23,8 @@ public class LoginController {
 
       if(error != null){
 
-          result.rejectValue("error", "error.username", "bledny login");
+          result.rejectValue("error", "error.login", "mesg");
+
       }
         if (result.hasErrors()) {
 
@@ -39,6 +40,8 @@ public class LoginController {
 
             return "login";
         }
+
+        model.addAttribute("success", "zalogowałeś się!");
 
                return "home";
     }

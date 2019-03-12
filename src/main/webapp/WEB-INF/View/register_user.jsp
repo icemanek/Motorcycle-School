@@ -1,11 +1,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page pageEncoding="UTF-8" contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Dodaj użytkownika</title>
     <link href="../css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/register.css" rel="stylesheet">
-
+    <meta charset="utf-8">
 
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="/resources/demos/style.css">
@@ -181,7 +182,7 @@
 <body id="body" class="light-mode">
 
 <center>
-<form:form method="post" modelAttribute="user" id="registration" accept-charset="UTF-8">
+<form:form method="post" modelAttribute="user" id="registration" >
 
     <label for="usernameId"></label>
     <form:input type="text" path="username" id="usernameId" placeholder="Wpisz login" title="tylko litery i cyfry bez znaków specjalnych" pattern="^[a-zA-Z0-9]+$" class="form-control" maxlength="100" minlength="5" required="" />
