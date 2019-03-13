@@ -225,7 +225,7 @@
     <form:hidden path="created"></form:hidden>
 
     <br>
-
+    <input type="reset" class="btn-liquid" value="Wyczyść">
     <input type="submit" class="btn-liquid" value="Zarejestruj">
 
     <p>Masz konto? <a href="/login">Zaloguj się!</a></p>

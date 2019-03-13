@@ -58,7 +58,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
     public ViewResolver htmlResolver(){
 
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/WEB-INF/View/");
+        viewResolver.setPrefix("/resources/templates");
         viewResolver.setSuffix(".html");
         return viewResolver;
 

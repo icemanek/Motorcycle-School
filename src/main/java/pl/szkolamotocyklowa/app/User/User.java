@@ -23,7 +23,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-
     @NotBlank
     @Column(unique = true)
     @Size(min = 3)
@@ -64,6 +63,9 @@ public class User {
     private boolean enabled;
 
 
+
+
+
     public String getRole() {
         return role;
     }
@@ -71,10 +73,6 @@ public class User {
     public void setRole(String role) {
         this.role = role;
     }
-
-    //    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-//    private List<Activities> activities;
-
 
     public String getGender() {
         return gender;
@@ -147,7 +145,6 @@ public class User {
     public void setPassword(String password) {
         this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }
-
 
     public boolean isEnabled() {
         return enabled;
