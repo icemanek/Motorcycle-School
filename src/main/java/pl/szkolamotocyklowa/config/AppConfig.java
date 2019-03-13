@@ -1,10 +1,12 @@
 package pl.szkolamotocyklowa.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -24,6 +26,9 @@ import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import pl.szkolamotocyklowa.app.SecurityConfig;
 
+import javax.mail.Message;
+import javax.mail.Session;
+import javax.mail.internet.MimeMessage;
 import javax.persistence.EntityManagerFactory;
 import javax.validation.Validator;
 import java.util.Locale;
@@ -60,12 +65,21 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return mailSender;
     }
 
+
     @Bean
     public ViewResolver viewResolver() {
         InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
         viewResolver.setPrefix("/WEB-INF/View/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
+    }
+
+
+    @Bean
+    public MessageSource messageSource() {
+        ReloadableResourceBundleMessageSource messageSource = new ReloadableResourceBundleMessageSource();
+        messageSource.setBasename("/WEB-INF/messages/messages");
+        return messageSource;
     }
 
     @Bean

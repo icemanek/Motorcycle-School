@@ -4,7 +4,6 @@ package pl.szkolamotocyklowa.app.User;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
 import org.mindrot.jbcrypt.BCrypt;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -13,15 +12,15 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.sql.Date;
 import java.time.LocalDate;
-import java.util.Calendar;
 
 
 @Entity
+@Table(name = "user")
 public class User {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
 
@@ -40,6 +39,7 @@ public class User {
 
     @NotBlank
     @Size(min = 8)
+    @Transient
     private String password;
 
     @NotEmpty
@@ -55,14 +55,14 @@ public class User {
 
     private String licence;
 
-
     @Column
     @Type(type="date")
     private Date birth;
 
     private String role = "user";
 
-    private int enabled ;
+    private boolean enabled;
+
 
     public String getRole() {
         return role;
@@ -124,7 +124,6 @@ public class User {
         this.email = email;
     }
 
-
     public LocalDate getCreated() {
         return created;
     }
@@ -149,20 +148,12 @@ public class User {
         this.password = BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
-//    public List<Activities> getActivities() {
-//        return activities;
-//    }
-//
-//    public void setActivities(List<Activities> activities) {
-//        this.activities = activities;
-//    }
 
-
-    public int getEnabled() {
+    public boolean isEnabled() {
         return enabled;
     }
 
-    public void setEnabled(int enabled) {
+    public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 

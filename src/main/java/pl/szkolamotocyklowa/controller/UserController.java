@@ -1,19 +1,16 @@
 package pl.szkolamotocyklowa.controller;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import pl.szkolamotocyklowa.app.EmailService;
-import pl.szkolamotocyklowa.app.EmailServiceImpl;
 import pl.szkolamotocyklowa.app.User.User;
-import pl.szkolamotocyklowa.app.activities.Activities;
-import pl.szkolamotocyklowa.repository.ActivitiesRepository;
 import pl.szkolamotocyklowa.repository.UserRepository;
 
+import javax.mail.Session;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.Validator;
 import java.util.*;
@@ -31,21 +28,6 @@ public class UserController {
     @Autowired
     Validator validator;
 
-    @Autowired
-    ActivitiesRepository activitiesRepository;
-
-//    @ModelAttribute("activities")
-//    public Collection<Activities> kursy(){
-//
-//        List<Activities> kursy2 = new ArrayList<>();
-//
-//        kursy2.add(new Activities("Podstawowy"));
-//        kursy2.add(new Activities("Rozszerzony"));
-//        kursy2.add(new Activities("Premium"));
-//
-//        return kursy2;
-//    }
-
 
     // <----------------------------Dodawanie użytkownika------------------->
 
@@ -61,7 +43,7 @@ public class UserController {
 
 
     @PostMapping("/add")
-    public String addUser(@ModelAttribute @Valid User user, Model model, BindingResult bindingResult) {
+    public String addUser(@ModelAttribute @Valid User user, Model model, BindingResult bindingResult, HttpServletRequest request) {
 
 
         User user1 = userRepository.findByEmail(user.getEmail());
@@ -84,15 +66,17 @@ public class UserController {
 
         } else {
 
-            emailService.sendSimpleMessage(user.getEmail(), "Registration", "Welcome " + user.getUsername() +
-                    ",\n" + "\nYou have succesfully joined us. Have fun!");
-            model.addAttribute("message", "Pomyślnie utworzyłeś konto!");
+
+            emailService.sendSimpleMessage(user.getEmail(), "Registration", "Witaj " + user.getUsername() + "Poprawnie się zarejestrowałeś!");
+
+            model.addAttribute("confirmationMessage", "Pomyślnie utworzyłeś konto!Potwierdzenie wysłane na adres" + user.getEmail());
             userRepository.save(user);
 
 
             return "home";
         }
     }
+
 
 
     //<----------------Edycja użytkownika----------------->
@@ -136,6 +120,5 @@ public class UserController {
 
         return "redirect:../all";
     }
-
 
 }
