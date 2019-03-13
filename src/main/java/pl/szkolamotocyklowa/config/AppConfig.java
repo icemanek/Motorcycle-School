@@ -42,29 +42,9 @@ import java.util.Properties;
 @EnableJpaRepositories(basePackages = "pl.szkolamotocyklowa")
 @EnableScheduling
 public class AppConfig extends WebMvcConfigurerAdapter {
+
     @Autowired
     private Environment env;
-
-
-    @Bean
-    public JavaMailSender getJavaMailSender(){
-
-        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
-        mailSender.setHost("smtp.gmail.com");
-        mailSender.setPort(587);
-
-        mailSender.setUsername("icefarnek@gmail.com");
-        mailSender.setPassword("emil1210");
-
-        Properties properties = mailSender.getJavaMailProperties();
-        properties.put("mail.transport.protocol", "smtp");
-        properties.put("mail.smtp.auth", "true");
-        properties.put("mail.smtp.starttls.enable", "true");
-        properties.put("mail.debug", "true");
-
-        return mailSender;
-    }
-
 
     @Bean
     public ViewResolver viewResolver() {
@@ -72,6 +52,16 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         viewResolver.setPrefix("/WEB-INF/View/");
         viewResolver.setSuffix(".jsp");
         return viewResolver;
+    }
+
+    @Bean
+    public ViewResolver htmlResolver(){
+
+        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
+        viewResolver.setPrefix("/WEB-INF/View/");
+        viewResolver.setSuffix(".html");
+        return viewResolver;
+
     }
 
 

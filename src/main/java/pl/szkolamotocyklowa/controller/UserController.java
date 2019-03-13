@@ -5,11 +5,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.szkolamotocyklowa.app.EmailService;
+import pl.szkolamotocyklowa.app.EmailSender;
 import pl.szkolamotocyklowa.app.User.User;
 import pl.szkolamotocyklowa.repository.UserRepository;
 
-import javax.mail.Session;
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.Validator;
@@ -23,7 +23,7 @@ public class UserController {
     UserRepository userRepository;
 
     @Autowired
-    private EmailService emailService;
+    EmailSender emailSender;
 
     @Autowired
     Validator validator;
@@ -43,7 +43,7 @@ public class UserController {
 
 
     @PostMapping("/add")
-    public String addUser(@ModelAttribute @Valid User user, Model model, BindingResult bindingResult, HttpServletRequest request) {
+    public String addUser(@ModelAttribute @Valid User user, Model model, BindingResult bindingResult, HttpServletRequest request) throws MessagingException {
 
 
         User user1 = userRepository.findByEmail(user.getEmail());
@@ -67,7 +67,9 @@ public class UserController {
         } else {
 
 
-            emailService.sendSimpleMessage(user.getEmail(), "Registration", "Witaj " + user.getUsername() + "Poprawnie się zarejestrowałeś!");
+            emailSender.sendMail(user.getEmail(),"Konto w serwisie","<b>Witaj " + " "+ user.getFirstName()+"!</b>" +"<br> Dokonałeś rejestracji!" +
+                    "<br>Aby dokończyc proces musisz kliknąć w link który znajduje się poniżej: "
+            +"<br>");
 
             model.addAttribute("confirmationMessage", "Pomyślnie utworzyłeś konto!Potwierdzenie wysłane na adres" + user.getEmail());
             userRepository.save(user);
