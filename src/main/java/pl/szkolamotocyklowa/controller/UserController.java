@@ -82,7 +82,7 @@ public class UserController {
 
             String body = "http://localhost:8080/user/confirm-account?token="+ confirmationToken.getConfirmationToken();
 
-            emailSender.sendMail(user.getEmail(),"Konto w serwisie","<b>Witaj " + " "+ user.getFirstName()+"!</b>" +"<br><br> Dokonałeś rejestracji!" +
+            emailSender.sendMail(user.getEmail(),"Aktywacja konta w serwisie","<b>Witaj " + " "+ user.getFirstName()+"!</b>" +"<br><br> Dokonałeś rejestracji!" +
                     "<br><br>Aby dokończyc proces musisz kliknąć w link który znajduje się poniżej: "+ "<br><br>"
                     + "<a href='"+body+ "'>"+ "Kliknij tutaj "+ "</a>" +"aby aktywować swoje konto. <b>Gotowe!>");
 
