@@ -1,0 +1,16 @@
+.footer-classic{
+
+    background-color: #353535;
+    height: 250px;
+}
+
+.content{
+
+    min-height: calc(65vh - 70px);
+}
+h5,.pr-xl-4,.contact-list, .col-xl-3 {
+
+    background: linear-gradient(to right, #E34A40, #F3A712);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

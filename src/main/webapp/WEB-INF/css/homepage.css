@@ -1,0 +1,101 @@
+
+body.dark-mode {
+    background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dark_wall.png);
+    color: darkgray;
+}
+
+body.light-mode{
+
+    background: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+    color: black;
+
+
+}
+body.light-mode .button {
+    position: relative;
+    color: black;
+    text-decoration: none;
+    background: linear-gradient(to right, #E34A40, #F3A712);
+    font-family: 'Yanone Kaffeesatz';
+    font-weight: 700;
+    font-size: 3em;
+    display: block;
+    padding: 4px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 9px 0 #E34A40, 0 9px 25px #F3A712;
+    -moz-box-shadow: 0 9px 0 #E34A40, 0 9px 25px #F3A712;
+    box-shadow: 0 9px 0 #E34A40, 0 9px 25px #F3A712;
+    margin: 100px auto;
+    width: 260px;
+    text-align: center;
+
+    -webkit-transition: all .1s ease;
+    -moz-transition: all .1s ease;
+    -ms-transition: all .1s ease;
+    -o-transition: all .1s ease;
+    transition: all .1s ease;
+
+
+}
+
+.button:hover{
+    -webkit-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
+    -moz-box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
+    box-shadow: 0px 3px 0px rgba(219,31,5,1), 0px 3px 6px rgba(0,0,0,.9);
+    position: relative;
+    top: 6px;
+}
+
+body.dark-mode .button {
+    position: relative;
+    color:black;
+    text-decoration: none;
+    background-color: grey;
+    font-family: 'Yanone Kaffeesatz';
+    font-weight: 700;
+    font-size: 3em;
+    display: block;
+    padding: 4px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0px 9px 0px rgba(0,0,0,.7), 0px 9px 25px rgba(0,0,0,.7);
+    -moz-box-shadow: 0px 9px 0px rgba(0,0,0,.7), 0px 9px 25px rgba(0,0,0,.7);
+    box-shadow: 0px 9px 0px rgba(0,0,0,.7), 0px 9px 25px rgba(0,0,0,.7);
+    margin: 100px auto;
+    width: 260px;
+    text-align: center;
+
+    -webkit-transition: all .1s ease;
+    -moz-transition: all .1s ease;
+    -ms-transition: all .1s ease;
+    -o-transition: all .1s ease;
+    transition: all .1s ease;
+}
+
+.close-alert{
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: white;
+    background-color: black;
+    opacity: .5;
+}
+
+.close-alert:hover{
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #000;
+    background-color: white;
+    opacity: .5;
+
+}
+
+.alert{
+    opacity: 0.5;
+
+    background-color: limegreen;
+}

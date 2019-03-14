@@ -1,6 +1,7 @@
 package pl.szkolamotocyklowa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -22,6 +23,7 @@ import java.util.*;
 public class UserController {
 
     @Autowired
+    @Qualifier("userRepository")
     UserRepository userRepository;
 
     @Autowired
@@ -111,27 +113,27 @@ public class UserController {
 
     //<-------------------Lista użytkowników---------------->
 
-    @GetMapping("/all")
-    public String allUsers(Model model) {
-
-        List<User> userList = userRepository.findAll();
-        model.addAttribute("users", userList);
-
-        return "userList";
-    }
+//    @GetMapping("/all")
+//    public String allUsers(Model model) {
+//
+//        List<User> userList = userRepository.findAll();
+//        model.addAttribute("users", userList);
+//
+//        return "userList";
+//    }
 
     //<------------------Usuwanie użytkownika-------------------->
+//
+//    @GetMapping("/delete/{id}")
+//    public String deleteUser(@PathVariable Long id) {
+//
+//        userRepository.deleteById(id);
+//
+//        return "redirect:../all";
+//    }
 
-    @GetMapping("/delete/{id}")
-    public String deleteUser(@PathVariable Long id) {
-
-        userRepository.deleteById(id);
-
-        return "redirect:../all";
-    }
-
-    @RequestMapping(value="/confirm-account{token}", method= {RequestMethod.GET, RequestMethod.POST})
-    public String confirmUserAccount(Model model, @PathVariable("token") String confirmationToken)
+    @RequestMapping(value="/confirm-account", method= {RequestMethod.GET, RequestMethod.POST})
+    public String confirmUserAccount(Model model, @RequestParam("token")String confirmationToken)
     {
         ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
 
@@ -149,6 +151,24 @@ public class UserController {
             return "error";
         }
 
+    }
+
+
+
+    public UserRepository getUserRepository() {
+        return userRepository;
+    }
+
+    public void setUserRepository(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    public ConfirmationTokenRepository getConfirmationTokenRepository() {
+        return confirmationTokenRepository;
+    }
+
+    public void setConfirmationTokenRepository(ConfirmationTokenRepository confirmationTokenRepository) {
+        this.confirmationTokenRepository = confirmationTokenRepository;
     }
 
 }
