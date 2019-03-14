@@ -16,7 +16,7 @@ If you want to improve your skills its place for you! <br>
   <li>Send mail to users <b>Done!</b></li><br>
   <li>Remember your next course <b>In progress..</b></li><br>
   <li>Activate account by email after register <b>Done!</b></li><br>
-<li>More input forms (example- you have to choose your birth date or if you dont have driver licence you can't buy course) <br></li><b>done</b>
+<li>More input forms (example- you have to choose your birth date or if you dont have driver licence you can't buy course) <b>Done!</b><br></li>
 </ul>
 
 <b>Technologies which i am using: <br></b>
@@ -28,5 +28,6 @@ If you want to improve your skills its place for you! <br>
 <li>REST <br></li>
 <li>Maven</li>
 <li>Tomcat</li>
+  <li>IntelliJ</li>
   
   </ul>
