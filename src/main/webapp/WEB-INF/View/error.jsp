@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: emil
@@ -8,11 +9,23 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/verified.css" rel="stylesheet">
 </head>
 <body>
+<%@ include file="parts/header.jsp" %>
 <center>
-    asdasd
+
+    <c:if test="${not empty error}">
+
+        <span>${error}</span>
+
+
+    </c:if>
+
+
 </center>
 </body>
+
+<footer><%@ include file="parts/footer.jsp" %></footer>
 </html>

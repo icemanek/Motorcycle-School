@@ -1,5 +1,6 @@
 package pl.szkolamotocyklowa.app;
 
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.stereotype.Service;
 
 import javax.mail.*;
@@ -12,7 +13,7 @@ public class EmailSender {
 
     public void sendMail(String to, String subject, String emailBody) throws MessagingException{
         final String username = "icefarnek@gmail.com";
-        final String password = "**(*****";
+        final String password = "emil1210";
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
@@ -35,7 +36,6 @@ public class EmailSender {
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             message.setSubject(subject);
             message.setContent(emailBody, "text/html; charset=utf-8");
-
             Transport.send(message);
 
             System.out.println("Email wysłany");

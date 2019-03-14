@@ -23,25 +23,19 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank
     @Column(unique = true)
-    @Size(min = 3)
     private String username;
 
-    @NotBlank
-    @Size(min = 3)
+
     private String firstName;
 
-    @NotBlank
-    @Size(min = 2)
+
     private String lastName;
 
-    @NotBlank
-    @Size(min = 8)
-    @Transient
+
     private String password;
 
-    @NotEmpty
+
     @Email
     @Column(unique = true)
     private String email;

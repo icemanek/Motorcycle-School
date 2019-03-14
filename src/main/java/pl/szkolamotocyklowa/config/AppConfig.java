@@ -54,16 +54,6 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         return viewResolver;
     }
 
-    @Bean
-    public ViewResolver htmlResolver(){
-
-        InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
-        viewResolver.setPrefix("/resources/templates");
-        viewResolver.setSuffix(".html");
-        return viewResolver;
-
-    }
-
 
     @Bean
     public MessageSource messageSource() {

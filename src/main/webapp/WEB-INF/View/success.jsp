@@ -9,10 +9,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/verified.css" rel="stylesheet">
+
+    <title>Rejestracja</title>
 </head>
 <body>
-
+<div class="content">
+<%@ include file="parts/header.jsp" %>
 <center>
     <c:if test="${not empty confirmationMessage}">
 
@@ -22,5 +26,7 @@
 </c:if>
 </center>
 
+</div>
 </body>
+<footer><jsp:include page="parts/footer.jsp"</footer>
 </html>

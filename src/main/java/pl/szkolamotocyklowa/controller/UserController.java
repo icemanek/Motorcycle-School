@@ -1,11 +1,13 @@
 package pl.szkolamotocyklowa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
+
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.util.UriComponentsBuilder;
 import pl.szkolamotocyklowa.app.EmailSender;
 import pl.szkolamotocyklowa.app.User.ConfirmationToken;
 import pl.szkolamotocyklowa.app.User.User;
@@ -13,7 +15,6 @@ import pl.szkolamotocyklowa.repository.ConfirmationTokenRepository;
 import pl.szkolamotocyklowa.repository.UserRepository;
 
 import javax.mail.MessagingException;
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.Validator;
 import java.util.*;
@@ -23,7 +24,6 @@ import java.util.*;
 public class UserController {
 
     @Autowired
-    @Qualifier("userRepository")
     UserRepository userRepository;
 
     @Autowired
@@ -50,7 +50,7 @@ public class UserController {
 
 
     @PostMapping("/add")
-    public String addUser(@ModelAttribute @Valid User user, Model model, BindingResult bindingResult, HttpServletRequest request) throws MessagingException {
+    public String addUser(@ModelAttribute @Valid User user, Model model, BindingResult bindingResult, UriComponentsBuilder builder) throws MessagingException {
 
 
         User user1 = userRepository.findByEmail(user.getEmail());
@@ -80,11 +80,13 @@ public class UserController {
             confirmationTokenRepository.save(confirmationToken);
 
 
-            emailSender.sendMail(user.getEmail(),"Konto w serwisie","<b>Witaj " + " "+ user.getFirstName()+"!</b>" +"<br> Dokonałeś rejestracji!" +
-                    "<br>Aby dokończyc proces musisz kliknąć w link który znajduje się poniżej:<br> "
-            + "http://localhost:8080/confirm-account?token=" + confirmationToken.getConfirmationToken());
+            String body = "http://localhost:8080/user/confirm-account?token="+ confirmationToken.getConfirmationToken();
 
-            model.addAttribute("confirmationMessage", "Pomyślnie utworzyłeś konto!Potwierdzenie wysłane na adres" + user.getEmail());
+            emailSender.sendMail(user.getEmail(),"Konto w serwisie","<b>Witaj " + " "+ user.getFirstName()+"!</b>" +"<br><br> Dokonałeś rejestracji!" +
+                    "<br><br>Aby dokończyc proces musisz kliknąć w link który znajduje się poniżej: "+ "<br><br>"
+                    + "<a href='"+body+ "'>"+ "Kliknij tutaj "+ "</a>" +"aby aktywować swoje konto. <b>Gotowe!>");
+
+            model.addAttribute("confirmationMessage", "Pomyślnie utworzyłeś konto!Potwierdzenie wysłane na adres  " + user.getEmail());
 
             return "success";
         }
@@ -111,26 +113,26 @@ public class UserController {
 
     }
 
-    //<-------------------Lista użytkowników---------------->
+//    <-------------------Lista użytkowników---------------->
 
-//    @GetMapping("/all")
-//    public String allUsers(Model model) {
-//
-//        List<User> userList = userRepository.findAll();
-//        model.addAttribute("users", userList);
-//
-//        return "userList";
-//    }
+    @GetMapping("/all")
+    public String allUsers(Model model) {
 
-    //<------------------Usuwanie użytkownika-------------------->
-//
-//    @GetMapping("/delete/{id}")
-//    public String deleteUser(@PathVariable Long id) {
-//
-//        userRepository.deleteById(id);
-//
-//        return "redirect:../all";
-//    }
+        List<User> userList = userRepository.findAll();
+        model.addAttribute("users", userList);
+
+        return "userList";
+    }
+
+//    <------------------Usuwanie użytkownika-------------------->
+
+    @GetMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Long id) {
+
+        userRepository.deleteById(id);
+
+        return "redirect:../all";
+    }
 
     @RequestMapping(value="/confirm-account", method= {RequestMethod.GET, RequestMethod.POST})
     public String confirmUserAccount(Model model, @RequestParam("token")String confirmationToken)
@@ -147,12 +149,11 @@ public class UserController {
         }
         else
         {
-            model.addAttribute("message", "The link is invalid or broken!");
+            model.addAttribute("error", "WYstąpił błąd! Spróbuj ponownie lub zgłoś się do administratora!");
             return "error";
         }
 
     }
-
 
 
     public UserRepository getUserRepository() {

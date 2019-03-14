@@ -8,12 +8,22 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/verified.css" rel="stylesheet">
+
+    <title>Aktywacja</title>
 </head>
 <body>
+<%@ include file="parts/header.jsp" %>
+<div class="content">
 <center>
-    <h3>Congratulations! Your account has been activated and email is verified!</h3>
+    <h1>Gratulacje! Konto zostało zweryfikowane!</h1>
+
+    <h2>Możesz się zalogować <a href="/login">Tutaj</a> </h2>
 </center>
+</div>
 </body>
 
+<footer>
+    <%@ include file="parts/footer.jsp" %></footer>
 </html>
