@@ -1,5 +1,6 @@
 package pl.szkolamotocyklowa.app.User;
 
+
 import java.util.Date;
 import java.util.UUID;
 
@@ -17,6 +18,9 @@ import javax.persistence.TemporalType;
 @Entity
 public class ConfirmationToken {
 
+    private static final int EXPIRATION = 60 * 24;
+
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="token_id")
@@ -31,6 +35,7 @@ public class ConfirmationToken {
     @OneToOne(targetEntity = User.class, fetch = FetchType.EAGER)
     @JoinColumn(nullable = false, name = "user_id")
     private User user;
+
 
     public ConfirmationToken() {
     }
@@ -72,4 +77,5 @@ public class ConfirmationToken {
     public void setTokenid(long tokenid) {
         this.tokenid = tokenid;
     }
+
 }

@@ -47,10 +47,8 @@ public class UserController {
 
     }
 
-
-
     @PostMapping("/add")
-    public String addUser(@ModelAttribute @Valid User user, Model model, BindingResult bindingResult, UriComponentsBuilder builder) throws MessagingException {
+    public String addUser(@ModelAttribute @Valid User user, Model model, BindingResult bindingResult) throws MessagingException {
 
 
         User user1 = userRepository.findByEmail(user.getEmail());
@@ -67,7 +65,9 @@ public class UserController {
             bindingResult.rejectValue("username", "username.error", "Ta nazwa jest w użyciu");
 
             return "register_user";
-        } else if (bindingResult.hasErrors()) {
+
+        } if (bindingResult.hasErrors()) {
+
 
             return "register_user";
 
@@ -82,9 +82,14 @@ public class UserController {
 
             String body = "http://localhost:8080/user/confirm-account?token="+ confirmationToken.getConfirmationToken();
 
-            emailSender.sendMail(user.getEmail(),"Aktywacja konta w serwisie","<b>Witaj " + " "+ user.getFirstName()+"!</b>" +"<br><br> Dokonałeś rejestracji!" +
-                    "<br><br>Aby dokończyc proces musisz kliknąć w link który znajduje się poniżej: "+ "<br><br>"
-                    + "<a href='"+body+ "'>"+ "Kliknij tutaj "+ "</a>" +"aby aktywować swoje konto. <b>Gotowe!>");
+            emailSender.sendMail(user.getEmail(),"Aktywacja konta","<html>"+
+                    "<head>"+"<style type='text/css'>"+
+                    "body { background: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%); font-family: 'Yanone Kaffeesatz'; font-weight: 700; font-size: 1.4em;}" +
+                    "h1{background-color: #353535; color: chocolate;}"+"a{color:green;}"+
+                    "p{color:black}" + "</style>"+ "</head>" + "<body>"+
+                    "<h1> <b> Witaj " + " "+ user.getFirstName()+"!</b> </h1>" +"<p> <br><br> Dokonałeś rejestracji!" +
+                    "<br><br>Aby dokończyc proces musisz kliknąć w link który znajduje się poniżej: "+ "<br><br> </p>"
+                    + "<a href='"+body+ "'>"+ "Kliknij tutaj aby aktywować swoje konto. <br><br>"+ "</a>"+" <p> <b>Gotowe! </p>" +"</body>"+"</html>");
 
             model.addAttribute("confirmationMessage", "Pomyślnie utworzyłeś konto!Potwierdzenie wysłane na adres  " + user.getEmail());
 
@@ -154,7 +159,6 @@ public class UserController {
         }
 
     }
-
 
     public UserRepository getUserRepository() {
         return userRepository;

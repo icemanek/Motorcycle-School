@@ -6,10 +6,7 @@ import org.hibernate.annotations.Type;
 import org.mindrot.jbcrypt.BCrypt;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.sql.Date;
 import java.time.LocalDate;
 
@@ -23,20 +20,21 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @NotEmpty(message = "Pole nie może być puste!")
     @Column(unique = true)
     private String username;
 
-
+    @NotEmpty(message = "Pole nie może być puste!")
     private String firstName;
 
-
+    @NotEmpty(message = "Pole nie może być puste!")
     private String lastName;
 
-
+    @NotEmpty(message = "Pole nie może być puste!")
     private String password;
 
-
     @Email
+    @NotEmpty(message = "Pole nie może być puste!")
     @Column(unique = true)
     private String email;
 
@@ -45,6 +43,7 @@ public class User {
 
 
     private String gender;
+
 
     private String licence;
 
@@ -55,8 +54,6 @@ public class User {
     private String role = "user";
 
     private boolean enabled;
-
-
 
 
 
@@ -155,4 +152,6 @@ public class User {
     public void setLicence(String licence) {
         this.licence = licence;
     }
+
+
 }
