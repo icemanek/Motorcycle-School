@@ -1,9 +1,7 @@
 package pl.szkolamotocyklowa.app.User;
 
 
-import java.util.Date;
-import java.util.UUID;
-
+import org.hibernate.annotations.Type;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -14,6 +12,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.UUID;
 
 @Entity
 public class ConfirmationToken {
@@ -36,14 +37,26 @@ public class ConfirmationToken {
     @JoinColumn(nullable = false, name = "user_id")
     private User user;
 
+    @Column
+    private Calendar expiryDate;
 
     public ConfirmationToken() {
     }
+
+    public void setExpiryDate(Calendar expiryDate) {
+        this.expiryDate = expiryDate;
+    }
+
+    public Calendar getExpiryDate() {
+        return expiryDate;
+    }
+
 
     public ConfirmationToken(User user) {
         this.user = user;
         createdDate = new Date();
         confirmationToken = UUID.randomUUID().toString();
+
     }
 
     public String getConfirmationToken() {

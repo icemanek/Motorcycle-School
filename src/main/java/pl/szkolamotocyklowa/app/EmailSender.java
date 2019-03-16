@@ -1,6 +1,6 @@
 package pl.szkolamotocyklowa.app;
 
-import org.springframework.mail.SimpleMailMessage;
+
 import org.springframework.stereotype.Service;
 
 import javax.mail.*;
@@ -12,8 +12,8 @@ import java.util.Properties;
 public class EmailSender {
 
     public void sendMail(String to, String subject, String emailBody) throws MessagingException{
-        final String username = "*********";
-        final String password = "******";
+        final String username = "icefarnek@gmail.com";
+        final String password = "emil1210";
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");

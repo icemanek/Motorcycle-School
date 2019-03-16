@@ -77,8 +77,11 @@ public class UserController {
 
             ConfirmationToken confirmationToken = new ConfirmationToken(user);
 
-            confirmationTokenRepository.save(confirmationToken);
+            Calendar cal = Calendar.getInstance();
+            cal.add(Calendar.HOUR_OF_DAY,24);
+            confirmationToken.setExpiryDate(cal);
 
+            confirmationTokenRepository.save(confirmationToken);
 
             String body = "http://localhost:8080/user/confirm-account?token="+ confirmationToken.getConfirmationToken();
 
@@ -88,7 +91,7 @@ public class UserController {
                     "h1{background-color: #353535; color: chocolate;}"+"a{color:green;}"+
                     "p{color:black}" + "</style>"+ "</head>" + "<body>"+
                     "<h1> <b> Witaj " + " "+ user.getFirstName()+"!</b> </h1>" +"<p> <br><br> Dokonałeś rejestracji!" +
-                    "<br><br>Aby dokończyc proces musisz kliknąć w link który znajduje się poniżej: "+ "<br><br> </p>"
+                    "<br><br>Aby dokończyc proces musisz kliknąć w link który znajduje się poniżej "+"<br> Masz na to 24h, po tym czasie token zostanie skasowany"+ "<br><br> </p>"
                     + "<a href='"+body+ "'>"+ "Kliknij tutaj aby aktywować swoje konto. <br><br>"+ "</a>"+" <p> <b>Gotowe! </p>" +"</body>"+"</html>");
 
             model.addAttribute("confirmationMessage", "Pomyślnie utworzyłeś konto!Potwierdzenie wysłane na adres  " + user.getEmail());
