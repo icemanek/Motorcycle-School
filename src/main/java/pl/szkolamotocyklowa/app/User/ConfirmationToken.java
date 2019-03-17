@@ -37,20 +37,28 @@ public class ConfirmationToken {
     @JoinColumn(nullable = false, name = "user_id")
     private User user;
 
-    @Column
-    private Calendar expiryDate;
+    @Column(nullable = false)
+    private Date expiryDate;
 
     public ConfirmationToken() {
     }
 
-    public void setExpiryDate(Calendar expiryDate) {
-        this.expiryDate = expiryDate;
+    public void setExpiryDate(int hours) {
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.HOUR, hours);
+
+        this.expiryDate = now.getTime();
     }
 
-    public Calendar getExpiryDate() {
+    public Date getExpiryDate() {
         return expiryDate;
     }
 
+
+    public boolean isExpired(){
+
+    return new Date().after(this.expiryDate);
+    }
 
     public ConfirmationToken(User user) {
         this.user = user;

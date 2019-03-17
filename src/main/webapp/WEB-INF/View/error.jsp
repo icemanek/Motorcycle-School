@@ -23,6 +23,14 @@
 
     </c:if>
 
+    <c:if test="${ not empty expiryToken}">
+
+        <span>${expiryToken}</span>
+
+    </c:if>
+
+    <h2> Jeśli chcesz ponownie wysłać link do aktywacji konta kliknij <a href="/user/resendRegistrationToken">Tutaj</a> </h2>
+
 
 </center>
 </body>

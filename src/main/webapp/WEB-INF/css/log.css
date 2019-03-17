@@ -50,7 +50,6 @@ body {
     font-family: 'Open Sans', sans-serif;
     background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dark_wall.png);
     color: whitesmoke;
-
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3E1D6D', endColorstr='#092756',GradientType=1 );
 }
 .login {
@@ -58,8 +57,8 @@ body {
     top: 50%;
     left: 50%;
     margin: -150px 0 0 -150px;
-    width:300px;
-    height:300px;
+    width:400px;
+    height:400px;
 }
 .login h1 { color: #fff; text-shadow: 0 0 10px rgba(0,0,0,0.3); letter-spacing:1px; text-align:center; }
 
@@ -67,29 +66,39 @@ input {
     width: 100% !important;
     margin-bottom: 10px;
     background: rgba(0,0,0,0.3);
-    border: none;
     outline: none;
-    padding: 10px;
+    padding: 13px;
     font-size: 13px;
-    color: #fff;
+    color:whitesmoke;
+    margin-top: 15px !important;
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
-    border: 1px solid rgba(0,0,0,0.3);
+    border: 1px solid ;
     border-radius: 4px;
-    box-shadow: inset 0 -5px 45px rgba(100,100,100,0.2), 0 1px 1px rgba(255,255,255,0.2);
+    box-shadow:  0 5px 8px #E34A40, 0 1px 1px rgba(255,255,255,0.2);
     -webkit-transition: box-shadow .5s ease;
     -moz-transition: box-shadow .5s ease;
     -o-transition: box-shadow .5s ease;
     -ms-transition: box-shadow .5s ease;
     transition: box-shadow .5s ease;
 }
-input:focus { box-shadow: inset 0 -5px 45px rgba(100,100,100,0.4), 0 1px 1px rgba(255,255,255,0.2); }
+input:focus {
+    box-shadow: inset 0 -5px 45px #724210, 0 1px 1px rgba(255,255,255,0.2); }
 
 .error{
 
     padding: 15px;
     background-color: red;
     color: #000;
-    width:83%;
+    width:100%;
+    opacity: 0.7;
 
+}
+
+a{
+
+    background: linear-gradient(to right, #E34A40, #F3A712);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
 }
 

@@ -100,13 +100,5 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         configurer.enable();
     }
 
-    @Bean
-    public PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
-        PropertySourcesPlaceholderConfigurer properties = new PropertySourcesPlaceholderConfigurer();
 
-        properties.setLocation(new ClassPathResource( "application.properties" ));
-        properties.setIgnoreResourceNotFound(false);
-
-        return properties;
-    }
 }

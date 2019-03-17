@@ -15,6 +15,7 @@ import pl.szkolamotocyklowa.repository.ConfirmationTokenRepository;
 import pl.szkolamotocyklowa.repository.UserRepository;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.Validator;
 import java.util.*;
@@ -77,9 +78,7 @@ public class UserController {
 
             ConfirmationToken confirmationToken = new ConfirmationToken(user);
 
-            Calendar cal = Calendar.getInstance();
-            cal.add(Calendar.HOUR_OF_DAY,24);
-            confirmationToken.setExpiryDate(cal);
+            confirmationToken.setExpiryDate(24);
 
             confirmationTokenRepository.save(confirmationToken);
 
@@ -90,11 +89,11 @@ public class UserController {
                     "body { background: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%); font-family: 'Yanone Kaffeesatz'; font-weight: 700; font-size: 1.4em;}" +
                     "h1{background-color: #353535; color: chocolate;}"+"a{color:green;}"+
                     "p{color:black}" + "</style>"+ "</head>" + "<body>"+
-                    "<h1> <b> Witaj " + " "+ user.getFirstName()+"!</b> </h1>" +"<p> <br><br> Dokonałeś rejestracji!" +
-                    "<br><br>Aby dokończyc proces musisz kliknąć w link który znajduje się poniżej "+"<br> Masz na to 24h, po tym czasie token zostanie skasowany"+ "<br><br> </p>"
+                    "<h1> <b> Witaj " + " "+ user.getFirstName()+"!</b> </h1>" +"<p> <br><br> Dokonałaś/eś rejestracji!" +
+                    "<br><br>Aby dokończyc proces musisz kliknąć w link który znajduje się poniżej. "+ "<br><br> </p>"
                     + "<a href='"+body+ "'>"+ "Kliknij tutaj aby aktywować swoje konto. <br><br>"+ "</a>"+" <p> <b>Gotowe! </p>" +"</body>"+"</html>");
 
-            model.addAttribute("confirmationMessage", "Pomyślnie utworzyłeś konto!Potwierdzenie wysłane na adres  " + user.getEmail());
+            model.addAttribute("confirmationMessage", "Pomyślnie utworzyłeś konto! Potwierdzenie wysłane na adres  " + user.getEmail());
 
             return "success";
         }
@@ -147,21 +146,63 @@ public class UserController {
     {
         ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
 
-        if(token != null)
-        {
+
+        if(token != null) {
             User user = userRepository.findByEmail(token.getUser().getEmail());
             user.setEnabled(true);
             userRepository.save(user);
 
             return "accountVerified";
-        }
-        else
-        {
+
+        } if (token.isExpired()){
+
+            model.addAttribute("error", "Link aktywacyjny wygasł");
+        return "error";
+    }
+
+        else {
             model.addAttribute("error", "WYstąpił błąd! Spróbuj ponownie lub zgłoś się do administratora!");
+
             return "error";
         }
 
     }
+
+//    @RequestMapping(value = "/resendRegistrationToken", method = RequestMethod.GET)
+//    public String resendRegistrationToken(
+//            Model model, HttpServletRequest request, @RequestParam("token") String existingToken, User user) throws MessagingException {
+//
+//        ConfirmationToken newToken = getConfirmationTokenRepository().generateNewVerificationToken(existingToken);
+//
+//       User user1 = userRepository.findUserByToken(newToken.getConfirmationToken());
+//
+//        newToken.setExpiryDate(24);
+//
+//        confirmationTokenRepository.save(newToken);
+//
+//        String body = "http://localhost:8080/user/resendRegistrationToken?token="+ newToken.getConfirmationToken();
+//
+//
+//        emailSender.sendMail(user.getEmail(),"Ponowna aktywacja konta","<html>"+
+//                "<head>"+"<style type='text/css'>"+
+//                "body { background: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%); font-family: 'Yanone Kaffeesatz'; font-weight: 700; font-size: 1.4em;}" +
+//                "h1{background-color: #353535; color: chocolate;}"+"a{color:green;}"+
+//                "p{color:black}" + "</style>"+ "</head>" + "<body>"+
+//                "<h1> <b> Witaj " + " "+ user.getFirstName()+"!</b> </h1>" +"<p> <br><br> Poprosiłaś/eś o nowy link do aktywacji konta" +
+//                "<br><br>Aby dokończyc proces musisz kliknąć w link który znajduje się poniżej. "+"<br> Masz na to 24h, po tym czasie musisz poprosić o ponowną aktywację."+ "<br><br> </p>"
+//                + "<a href='"+body+ "'>"+ "Kliknij tutaj aby aktywować swoje konto. <br><br>"+ "</a>"+" <p> <b>Gotowe! </p>" +"</body>"+"</html>");
+//
+//        model.addAttribute("newToken", "Zresetowano link aktywacyjny do konta. Został wysłany na adres:   " + user.getEmail());
+//
+//        return "resetToken";
+//    }
+
+
+
+
+
+
+
 
     public UserRepository getUserRepository() {
         return userRepository;
