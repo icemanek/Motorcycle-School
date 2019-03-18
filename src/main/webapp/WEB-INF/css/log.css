@@ -102,3 +102,7 @@ a{
     text-decoration: none;
 }
 
+[type="checkbox"]{
+
+    width: 40px !important;
+}

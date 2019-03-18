@@ -43,14 +43,15 @@
         <label for="passwordId" name="p">
             <form:input type="password" path="password" id="passwordId" class="form-control" placeholder="Hasło" required="true"/>
             <form:errors path="password" element="div" cssClass="error"/>
+        </label>
+<p>
 
-            <input type="checkbox" name="remember-me" class="form-control">Zapamiętaj mnie</label>
-
+    <input type="checkbox" name="remember-me">Zapamiętaj mnie
+</p>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
             <button  type="submit" class="btn-liquid" onclick="validate()" >Zaloguj Się</button>
 
-        </label>
 
         <p>Nie masz konta? <a href="/user/add">Zarejestruj się!</a></p>
         <p>Jesteś instruktorem?<a href="/instructor/add">Kliknij tutaj</a></p>
