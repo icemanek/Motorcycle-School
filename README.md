@@ -26,8 +26,10 @@ If you want to improve your skills its place for you! <br>
 <li>Hibernate <br></li>
 <li>MVC <br></li>
 <li>REST <br></li>
+<li>Javascript</li>
+<li>JQuery</li>
 <li>Maven</li>
 <li>Tomcat</li>
-  <li>IntelliJ</li>
+<li>IntelliJ</li>
   
   </ul>

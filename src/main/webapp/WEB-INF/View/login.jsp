@@ -44,6 +44,7 @@
             <form:input type="password" path="password" id="passwordId" class="form-control" placeholder="Hasło" required="true"/>
             <form:errors path="password" element="div" cssClass="error"/>
 
+            <input type="checkbox" name="remember-me" class="form-control">Zapamiętaj mnie</label>
 
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 

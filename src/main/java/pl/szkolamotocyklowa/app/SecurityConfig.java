@@ -44,7 +44,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/spring_security_check")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .permitAll();
+                .permitAll().and()
+                .rememberMe().key("remember-me");
 
 
         http.logout().logoutSuccessUrl("/");
