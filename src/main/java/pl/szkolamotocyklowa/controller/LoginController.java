@@ -50,6 +50,7 @@ public class LoginController {
     public String showLogin(Model model){
 
       User user = new User();
+
         model.addAttribute("login", user);
 
       return "login";

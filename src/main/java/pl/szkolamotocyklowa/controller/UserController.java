@@ -3,6 +3,12 @@ package pl.szkolamotocyklowa.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.http.HttpRequest;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -32,6 +38,9 @@ public class UserController {
 
     @Autowired
     Validator validator;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @Autowired
     private ConfirmationTokenRepository confirmationTokenRepository;
@@ -148,6 +157,7 @@ public class UserController {
 
 
         if(token != null) {
+
             User user = userRepository.findByEmail(token.getUser().getEmail());
             user.setEnabled(true);
             userRepository.save(user);
@@ -168,56 +178,111 @@ public class UserController {
 
     }
 
-//    @RequestMapping(value = "/resendRegistrationToken", method = RequestMethod.GET)
-//    public String resendRegistrationToken(
-//            Model model, HttpServletRequest request, @RequestParam("token") String existingToken, User user) throws MessagingException {
-//
-//        ConfirmationToken newToken = getConfirmationTokenRepository().generateNewVerificationToken(existingToken);
-//
-//       User user1 = userRepository.findUserByToken(newToken.getConfirmationToken());
-//
-//        newToken.setExpiryDate(24);
-//
-//        confirmationTokenRepository.save(newToken);
-//
-//        String body = "http://localhost:8080/user/resendRegistrationToken?token="+ newToken.getConfirmationToken();
-//
-//
-//        emailSender.sendMail(user.getEmail(),"Ponowna aktywacja konta","<html>"+
-//                "<head>"+"<style type='text/css'>"+
-//                "body { background: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%); font-family: 'Yanone Kaffeesatz'; font-weight: 700; font-size: 1.4em;}" +
-//                "h1{background-color: #353535; color: chocolate;}"+"a{color:green;}"+
-//                "p{color:black}" + "</style>"+ "</head>" + "<body>"+
-//                "<h1> <b> Witaj " + " "+ user.getFirstName()+"!</b> </h1>" +"<p> <br><br> Poprosiłaś/eś o nowy link do aktywacji konta" +
-//                "<br><br>Aby dokończyc proces musisz kliknąć w link który znajduje się poniżej. "+"<br> Masz na to 24h, po tym czasie musisz poprosić o ponowną aktywację."+ "<br><br> </p>"
-//                + "<a href='"+body+ "'>"+ "Kliknij tutaj aby aktywować swoje konto. <br><br>"+ "</a>"+" <p> <b>Gotowe! </p>" +"</body>"+"</html>");
-//
-//        model.addAttribute("newToken", "Zresetowano link aktywacyjny do konta. Został wysłany na adres:   " + user.getEmail());
-//
-//        return "resetToken";
-//    }
+    @GetMapping(value = "/forgot")
+    public String displayForgotPasswordPage(Model model){
 
 
+        User user = new User();
 
+        model.addAttribute("forgot", user);
 
-
-
-
-
-    public UserRepository getUserRepository() {
-        return userRepository;
+        return "forgotPass";
     }
 
-    public void setUserRepository(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    @PostMapping(value = "/forgot")
+    public String processForgotPassword(Model model, @RequestBody String email) throws MessagingException {
+
+
+        Optional<User> optional = userRepository.findUserByEmail(email);
+
+//        if(!optional.isPresent()){
+//
+//            model.addAttribute("error", "Nie ma takiego adresu w bazie!");
+//
+//            return "error";
+//
+//        } else {
+
+        if (optional.isPresent()) {
+
+            User user = optional.get();
+            user.setResetToken(UUID.randomUUID().toString());
+
+            userRepository.save(user);
+
+            String body = "http://localhost:8080/user/reset?token=" + user.getResetToken();
+
+            emailSender.sendMail(user.getEmail(), "Resetowanie hasła", "<html>" +
+                    "<head>" + "<style type='text/css'>" +
+                    "body { background: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%); font-family: 'Yanone Kaffeesatz'; font-weight: 700; font-size: 1.4em;}" +
+                    "h1{background-color: #353535; color: chocolate;}" + "a{color:green;}" +
+                    "p{color:black}" + "</style>" + "</head>" + "<body>" +
+                    "<h1> <b> Witaj " + " " + user.getFirstName() + "!</b> </h1>" + "<p> <br><br> Poprosiłeś/aś o link do resetowania hasła." +
+                    "<br><br>Aby dokończyc proces musisz kliknąć w link który znajduje się poniżej. " + "<br><br> </p>"
+                    + "<a href='" + body + "'>" + "Kliknij tutaj aby zresetować hasło. <br><br>" + "</a>" + " <p> <b>Gotowe! </p>" + "</body>" + "</html>");
+
+
+            model.addAttribute("succ", "Link do zresetowania hasła wysłany na adres email!");
+
+            return "forgotPassSucc";
+
+
+        }
+
+        return "";
     }
 
-    public ConfirmationTokenRepository getConfirmationTokenRepository() {
-        return confirmationTokenRepository;
+
+    @GetMapping(value = "/reset")
+    public String displayResetPasswordPage(Model model, @RequestParam("resetToken") String resetToken){
+
+        Optional<User> user = userRepository.findByResetToken(resetToken);
+
+        if(user.isPresent()){
+
+            model.addAttribute("resetToken", resetToken);
+
+            return "changePass";
+        } else {
+
+            model.addAttribute("error", "Błąd!");
+
+            return "error";
+        }
     }
 
-    public void setConfirmationTokenRepository(ConfirmationTokenRepository confirmationTokenRepository) {
-        this.confirmationTokenRepository = confirmationTokenRepository;
-    }
+  @PostMapping(value = "/reset")
+  public String setNewPassword(Model model, @RequestParam Map<String,String> requestParams){
+
+
+
+        Optional<User> user = userRepository.findByResetToken(requestParams.get("resetToken"));
+
+        if (user.isPresent()){
+
+            User resetUser = user.get();
+
+            resetUser.setPassword(passwordEncoder.encode(requestParams.get("password")));
+
+            resetUser.setResetToken(null);
+
+            userRepository.save(resetUser);
+
+            model.addAttribute("passChng","Hasło zostało zmienione!" );
+
+            return "login";
+        } else {
+
+            model.addAttribute("error", "Błąd!");
+            return "error";
+        }
+
+
+
+
+
+
+  }
+
 
 }

@@ -52,7 +52,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .rememberMe().tokenValiditySeconds(24 * 60 * 60)
                 .tokenRepository(persistentTokenRepository());
 
-
         http.logout().logoutSuccessUrl("/").deleteCookies("JSESSIONID");
     }
 
