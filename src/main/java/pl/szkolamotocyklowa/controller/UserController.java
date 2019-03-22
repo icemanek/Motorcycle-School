@@ -179,31 +179,24 @@ public class UserController {
     }
 
     @GetMapping(value = "/forgot")
-    public String displayForgotPasswordPage(Model model){
-
-
-        User user = new User();
-
-        model.addAttribute("forgot", user);
+    public String displayForgotPasswordPage(){
 
         return "forgotPass";
     }
 
     @PostMapping(value = "/forgot")
-    public String processForgotPassword(Model model, @RequestBody String email) throws MessagingException {
+    public String processForgotPassword(Model model, @RequestParam String email) throws MessagingException {
 
 
         Optional<User> optional = userRepository.findUserByEmail(email);
 
-//        if(!optional.isPresent()){
-//
-//            model.addAttribute("error", "Nie ma takiego adresu w bazie!");
-//
-//            return "error";
-//
-//        } else {
+        if(!optional.isPresent()){
 
-        if (optional.isPresent()) {
+            model.addAttribute("error", "Nie ma takiego adresu w bazie!");
+
+            return "error";
+
+        } else {
 
             User user = optional.get();
             user.setResetToken(UUID.randomUUID().toString());
@@ -229,7 +222,6 @@ public class UserController {
 
         }
 
-        return "";
     }
 
 

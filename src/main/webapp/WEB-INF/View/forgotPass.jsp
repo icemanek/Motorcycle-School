@@ -13,7 +13,7 @@
 </head>
 <body>
 
-   <form:form modelAttribute="forgot" method="post">
+   <form:form  method="post">
 
        <label id="emailId">
 
