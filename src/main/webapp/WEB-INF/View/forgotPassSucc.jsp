@@ -9,6 +9,10 @@
 <html>
 <head>
 
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/verified.css" rel="stylesheet">
+
 </head>
 <body>
 <%@ include file="parts/header.jsp" %>
@@ -26,5 +30,4 @@
 </center>
 </body>
 
-<footer><%@ include file="parts/footer.jsp" %> </footer>
 </html>

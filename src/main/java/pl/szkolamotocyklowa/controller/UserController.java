@@ -193,14 +193,6 @@ public class UserController {
 
         User user = userRepository.findByEmail(email);
 
-//        if(!optional.isPresent()){
-//
-//            model.addAttribute("error", "Nie ma takiego adresu w bazie!");
-//
-//            return "error";
-//
-//        } else {
-
 
           user.setResetToken(UUID.randomUUID().toString());
 
@@ -218,7 +210,7 @@ public class UserController {
                     + "<a href='" + body + "'>" + "Kliknij tutaj aby zresetować hasło. <br><br>" + "</a>" + " <p> <b>Gotowe! </p>" + "</body>" + "</html>");
 
 
-            model.addAttribute("succ", "Link do zresetowania hasła wysłany na adres email!");
+            model.addAttribute("succ", "Jeśli email istnieje w bazie, został wysłany link resetujący hasło.");
 
             return "forgotPassSucc";
 
@@ -235,7 +227,7 @@ public class UserController {
 
         if(user.isPresent()){
 
-            model.addAttribute("resetToken", resetToken);
+            model.addAttribute("user", new User());
 
             return "changePass";
         } else {
@@ -257,7 +249,7 @@ public class UserController {
 
             User resetUser = user.get();
 
-            resetUser.setPassword(passwordEncoder.encode(requestParams.get("password")));
+            resetUser.setPassword(requestParams.get("password"));
 
             resetUser.setResetToken(null);
 
@@ -265,17 +257,12 @@ public class UserController {
 
             model.addAttribute("passChng","Hasło zostało zmienione!" );
 
-            return "login";
+            return "home";
         } else {
 
             model.addAttribute("error", "Błąd!");
             return "error";
         }
-
-
-
-
-
 
   }
 

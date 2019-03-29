@@ -10,18 +10,51 @@
 <html>
 <head>
 
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/verified.css" rel="stylesheet">
+
+    <script type="text/javascript">
+        function Validate() {
+            var password = document.getElementById("password").value;
+            var confirmPassword = document.getElementById("confirm_password").value;
+
+            if (password != confirmPassword) {
+                document.getElementById("message").style.color = "red";
+                document.getElementById("message").innerHTML = "Hasła nie pasują!";
+
+                return false;
+            }
+            return true;
+        }
+    </script>
+
 </head>
 <body>
 
-<div id="errormsg" style="display:none"></div>
-<div>
+<%@ include file="parts/header.jsp" %>
 
-    <input id="pass" name="password" type="password" placeholder="Hasło" required/>
-    <input id="passConfirm" type="password"  placeholder="Powtórz hasło" required />
-    <span id="error" style="display:none">Password mismatch</span>
+<center>
 
-    <button type="submit" onclick="savePass()">Change Password</button>
-</div>
+
+    <form:form  method="post" modelAttribute="user">
+
+
+        <form:input type="password"  path="password" title="Musi zawierać jedną mała literę, jedną wielką, jedną cyfrę i jeden znak specjalny" placeholder="Ustaw hasło" id="password" class="form-control" maxlength="100" minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required="true" />
+
+        <br>
+
+        <input type="password" id="confirm_password"  placeholder="Powtórz hasło" required />
+
+        <span id="message" ></span>
+
+        <br>
+
+        <button type="submit" class="btn-liquid" onclick="return Validate()">Wyślij</button>
+
+    </form:form>
+
+
+</center>
 
 </body>
 </html>
