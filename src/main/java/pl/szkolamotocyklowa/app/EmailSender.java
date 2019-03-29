@@ -12,6 +12,7 @@ import java.util.Properties;
 public class EmailSender {
 
     public void sendMail(String to, String subject, String emailBody) throws MessagingException{
+
         final String username = "icefarnek@gmail.com";
         final String password = "****";
 
