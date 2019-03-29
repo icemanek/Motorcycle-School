@@ -13,13 +13,15 @@
 </head>
 <body>
 
-   <form:form  method="post">
+   <form:form  method="post" modelAttribute="user">
 
-       <label id="emailId">
 
-           <form:input path="email" class="form-control" id="emailId" type="email" required="true" />
 
-       </label>
+           <%--<input type="email" id="email" placeholder="Email" required >--%>
+           <%----%>
+
+           <form:input path="email" type="email" placeholder="Email" required="true" />
+
 
 
 
@@ -27,8 +29,16 @@
 
    </form:form>
 
+   <%--<form action="/user/forgot" method="post">--%>
+
+<%--<input type="email"  placeholder="Email" required />--%>
+       <%----%>
+       <%--<button type="submit" value="Wyslij" > Wyślij</button>--%>
 
 
+   <%--</form>--%>
+
+   <%--<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
 
 </body>
 </html>

@@ -179,31 +179,34 @@ public class UserController {
     }
 
     @GetMapping(value = "/forgot")
-    public String displayForgotPasswordPage(){
+    public String displayForgotPasswordPage(Model model){
+
+
+        model.addAttribute("user", new User());
 
         return "forgotPass";
     }
 
     @PostMapping(value = "/forgot")
-    public String processForgotPassword(Model model, @RequestParam String email) throws MessagingException {
+    public String processForgotPassword(String email, Model model) throws MessagingException {
 
 
-        Optional<User> optional = userRepository.findUserByEmail(email);
+        User user = userRepository.findByEmail(email);
 
-        if(!optional.isPresent()){
+//        if(!optional.isPresent()){
+//
+//            model.addAttribute("error", "Nie ma takiego adresu w bazie!");
+//
+//            return "error";
+//
+//        } else {
 
-            model.addAttribute("error", "Nie ma takiego adresu w bazie!");
 
-            return "error";
+          user.setResetToken(UUID.randomUUID().toString());
 
-        } else {
+          userRepository.save(user);
 
-            User user = optional.get();
-            user.setResetToken(UUID.randomUUID().toString());
-
-            userRepository.save(user);
-
-            String body = "http://localhost:8080/user/reset?token=" + user.getResetToken();
+            String body = "http://localhost:8080/user/reset?resetToken=" + user.getResetToken();
 
             emailSender.sendMail(user.getEmail(), "Resetowanie hasła", "<html>" +
                     "<head>" + "<style type='text/css'>" +
@@ -222,7 +225,7 @@ public class UserController {
 
         }
 
-    }
+
 
 
     @GetMapping(value = "/reset")

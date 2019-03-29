@@ -50,7 +50,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .passwordParameter("password")
                 .permitAll().and()
                 .rememberMe().tokenValiditySeconds(24 * 60 * 60)
-                .tokenRepository(persistentTokenRepository());
+                .tokenRepository(persistentTokenRepository())
+        .and().csrf().disable();
 
         http.logout().logoutSuccessUrl("/").deleteCookies("JSESSIONID");
     }
