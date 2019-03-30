@@ -12,11 +12,11 @@ If you want to improve your skills its place for you! <br>
 <b>Its not everything. I want to improve:</b>
 <ul>
 <li>Spring Security-different sites for instructor, admin and new user <b>Done!</b> <br></li>
-<li>Place where you can buy course and pay for it <b>In progress..</b><br></li>
-  <li>Send mail to users <b>Done!</b></li><br>
-  <li>Reset password via token, if you dont remember! <b>Done!</b></li><br>
-  <li>Login form with remember me<b>Done!</b></li><br>
-  <li>Remember your next course <b>In progress..</b></li><br>
+<li>Place where you can buy course and pay for it <b>In progress.. </b><br></li>
+  <li>Send mail to users  <b>Done!</b></li><br>
+  <li>Reset password via token, if you dont remember!  <b>Done!</b></li><br>
+  <li>Login form with remember me <b>Done!</b></li><br>
+  <li>Remember your next course  <b>In progress..</b></li><br>
   <li>Activate account by email after register <b>Done!</b></li><br>
 <li>More input forms (example- you have to choose your birth date or if you dont have driver licence you can't buy course) <b>Done!</b><br></li>
 </ul>
