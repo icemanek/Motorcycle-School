@@ -11,7 +11,7 @@ If you want to improve your skills its place for you! <br>
 </ul>
 <b>Its not everything. I want to improve:</b>
 <ul>
-<li>-[X] Spring Security-different sites for instructor, admin and new user <b>Done!</b> <br></li>
+<li>-[X] Spring Security-different sites for instructor, admin and new user <b>Done!</b> <br></li><br>
   <li>-[X] Send mail to users  <b>Done!</b></li><br>
   <li>-[X] Reset password via token, if you dont remember!  <b>Done!</b></li><br>
   <li>-[X] Login form with remember me <b>Done!</b></li><br>
