@@ -2,6 +2,9 @@
 
 <b>School for bikers</b> <br>
 
+
+![](Webp.net-gifmaker.gif)
+
 If you want to improve your skills its place for you! <br>
 <ul>
 <li>you can check our offers <br></li>
