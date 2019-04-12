@@ -5,7 +5,7 @@ body {
     line-height: 1.42em;
     color: #A7A1AE;
     background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dark_wall.png);
-
+    overflow-y: hidden;
 }
 
 

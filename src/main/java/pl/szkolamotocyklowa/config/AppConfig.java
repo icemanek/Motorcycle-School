@@ -6,13 +6,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalEntityManagerFactoryBean;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -27,14 +23,10 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import pl.szkolamotocyklowa.app.SecurityConfig;
-
-import javax.mail.Message;
-import javax.mail.Session;
-import javax.mail.internet.MimeMessage;
 import javax.persistence.EntityManagerFactory;
 import javax.validation.Validator;
 import java.util.Locale;
-import java.util.Properties;
+
 
 @Import({SecurityConfig.class})
 @Configuration

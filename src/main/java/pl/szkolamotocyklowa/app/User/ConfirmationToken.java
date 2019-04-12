@@ -1,7 +1,6 @@
 package pl.szkolamotocyklowa.app.User;
 
 
-import org.hibernate.annotations.Type;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -18,8 +17,6 @@ import java.util.UUID;
 
 @Entity
 public class ConfirmationToken {
-
-    private static final int EXPIRATION = 60 * 24;
 
 
     @Id

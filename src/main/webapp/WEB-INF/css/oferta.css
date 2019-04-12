@@ -1,6 +1,6 @@
 /******************* Pricing Table*****************/
-.demo2.light-mode{ background: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);;padding:30px 0}
-.demo2.dark-mode{background-color: #353535; color: darkgray}
+.demo2.light-mode{  overflow-y: hidden; background: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);;padding:30px 0}
+.demo2.dark-mode{ overflow-y: hidden;  background-color: #353535; color: darkgray}
 body.light-mode .pricingTable2{padding-bottom:30px;margin:0 15px;background:#fff;text-align:center;border-radius:15px;overflow:hidden}
 body.light-mode .pricingTable2:hover{box-shadow:0 0 10px rgba(195,67,67,.3) inset,0 0 20px -5px rgba(0,0,0,.8)}
 body.light-mode .pricingTable2 .pricingTable-header{padding:20px 15px 45px;background:#66ce04;-webkit-clip-path:polygon(50% 100%,100% 60%,100% 0,0 0,0 60%);clip-path:polygon(50% 100%,100% 60%,100% 0,0 0,0 60%);position:relative}

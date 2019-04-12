@@ -6,6 +6,7 @@ body {
     color: #e9e6ed;
     background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dark_wall.png);
     width: 100%;
+    overflow-y: hidden;
 }
 
 

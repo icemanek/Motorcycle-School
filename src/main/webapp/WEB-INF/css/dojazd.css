@@ -2,6 +2,7 @@
 body {
     background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dark_wall.png);
     color: darkgray;
+    overflow-y: hidden;
 }
 
 .content{

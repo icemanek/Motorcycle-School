@@ -1,27 +1,17 @@
 package pl.szkolamotocyklowa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-
-import org.springframework.http.HttpRequest;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.util.UriComponentsBuilder;
 import pl.szkolamotocyklowa.app.EmailSender;
 import pl.szkolamotocyklowa.app.User.ConfirmationToken;
 import pl.szkolamotocyklowa.app.User.User;
 import pl.szkolamotocyklowa.repository.ConfirmationTokenRepository;
 import pl.szkolamotocyklowa.repository.UserRepository;
-
 import javax.mail.MessagingException;
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.validation.Validator;
 import java.util.*;
