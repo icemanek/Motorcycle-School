@@ -1,4 +1,4 @@
-package pl.szkolamotocyklowa.app;
+package pl.szkolamotocyklowa.config;
 
 
 import org.springframework.context.annotation.ComponentScan;

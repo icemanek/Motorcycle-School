@@ -54,7 +54,7 @@
     <td>${users.birth}</td>
     <td>${users.licence}</td>
         <td>${users.created}</td>
-    <%--<td>${users.activities}</td>--%>
+    <%--<td>${users.Activities}</td>--%>
         <c:if test="${pageContext.request.userPrincipal.name != null}">
             <c:if test="${pageContext.request.isUserInRole('admin')}">
         <td>

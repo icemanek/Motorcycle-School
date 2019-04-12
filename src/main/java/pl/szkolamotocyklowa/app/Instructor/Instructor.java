@@ -2,15 +2,12 @@ package pl.szkolamotocyklowa.app.Instructor;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.mindrot.jbcrypt.BCrypt;
-import pl.szkolamotocyklowa.app.activities.Activities;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @Entity
 @Table(name = "INSTRUCTORS")

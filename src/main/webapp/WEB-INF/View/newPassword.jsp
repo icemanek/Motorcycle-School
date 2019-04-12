@@ -44,7 +44,7 @@
 
 <form:input path="password" type="password" class="form-control" placeholder="Nowe Hasło" required="true" />
 
-    <input type="password" id="confirm_password"  placeholder="Powtórz hasło" required="true">
+    <input type="password" id="confirm_password" class="form-control" placeholder="Powtórz hasło" required="true">
 
 
     <input type="submit" onclick="savePass()">Change Password</input>

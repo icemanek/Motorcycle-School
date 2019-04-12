@@ -2,7 +2,6 @@ package pl.szkolamotocyklowa.app;
 
 
 import org.springframework.stereotype.Service;
-
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
@@ -11,7 +10,8 @@ import java.util.Properties;
 @Service
 public class EmailSender {
 
-    public void sendMail(String to, String subject, String emailBody) throws MessagingException{
+    public void sendMail(String to, String subject, String body) throws MessagingException{
+
         final String username = "icefarnek@gmail.com";
         final String password = "emil1210";
 
@@ -35,7 +35,8 @@ public class EmailSender {
             message.setFrom(new InternetAddress());
             message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
             message.setSubject(subject);
-            message.setContent(emailBody, "text/html; charset=utf-8");
+            message.setContent(body, "text/html; charset=utf-8");
+
             Transport.send(message);
 
             System.out.println("Email wysłany");

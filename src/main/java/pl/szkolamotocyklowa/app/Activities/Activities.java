@@ -1,4 +1,4 @@
-package pl.szkolamotocyklowa.app.activities;
+package pl.szkolamotocyklowa.app.Activities;
 
 import org.hibernate.annotations.CreationTimestamp;
 import pl.szkolamotocyklowa.app.User.User;

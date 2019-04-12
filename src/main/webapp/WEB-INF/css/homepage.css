@@ -96,8 +96,8 @@ body.dark-mode .button {
 
 }
 
-.alert{
+.alert {
     opacity: 0.5;
-
     background-color: limegreen;
+    transition: opacity 500ms;
 }

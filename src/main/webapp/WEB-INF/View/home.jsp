@@ -19,12 +19,14 @@
 <body id="body" class="light-mode">
 <center>
     <c:if test="${not empty message}">
-
         <div class="alert" role="alert">
-            <button class="close-alert" data-dismiss="alert" aria-label="close">
-            </button>
             <strong>${message}</strong>
+        </div>
+    </c:if>
 
+    <c:if test="${not empty passChng}">
+        <div class="alert" role="alert">
+            <strong>${passChng}</strong>
         </div>
     </c:if>
 

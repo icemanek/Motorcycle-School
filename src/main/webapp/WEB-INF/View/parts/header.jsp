@@ -42,7 +42,7 @@
 
             <c:if test="${pageContext.request.userPrincipal.name != null}">
                 <li class="nav-list-item">
-                    <a href="/user/updatePassword" class="nav-link"> <i class="fas fa-chalkboard-teacher"></i> Zmień hasło</a>
+                    <a href="/password/reset" class="nav-link"> <i class="fas fa-chalkboard-teacher"></i> Zmień hasło</a>
                 </li>
             </c:if>
             <li class="nav-list-item">

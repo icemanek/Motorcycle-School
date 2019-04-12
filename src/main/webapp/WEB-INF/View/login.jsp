@@ -54,7 +54,7 @@
 
 
         <p>Nie masz konta? <a href="/user/add">Zarejestruj się!</a></p>
-        <p>Zapomniałeś hasła? <a href="/user/forgot">Kliknij tutaj</a></p>
+        <p>Zapomniałeś hasła? <a href="/password/forgot">Kliknij tutaj</a></p>
         <p>Jesteś instruktorem?<a href="/instructor/add">Kliknij tutaj</a></p>
     </div>
 </form:form>

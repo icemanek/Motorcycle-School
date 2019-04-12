@@ -1,4 +1,4 @@
-package pl.szkolamotocyklowa.app;
+package pl.szkolamotocyklowa.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -11,6 +11,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.rememberme.JdbcTokenRepositoryImpl;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
+import pl.szkolamotocyklowa.app.DataSource;
 
 @Configuration
 @EnableWebSecurity
@@ -42,7 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/confirm-account*").permitAll()
                 .antMatchers("/login/**").hasRole("USER").and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/login").permitAll()
                 .loginProcessingUrl("/spring_security_check")
                 .usernameParameter("username")
                 .passwordParameter("password")
