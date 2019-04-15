@@ -17,20 +17,20 @@ public class LoginController {
     private UserRepository userRepository;
 
     @Autowired
-    void userRepo(UserRepository userRepository){
+    void userRepo(UserRepository userRepository) {
 
         this.userRepository = userRepository;
     }
 
 
-  @RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.PUT})
-    public String login(@Valid @ModelAttribute ("login") User user, Model model, BindingResult result, @RequestParam(value = "error") String error) {
+    @RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.PUT})
+    public String login(@Valid @ModelAttribute("login") User user, Model model, BindingResult result, @RequestParam(value = "error") String error) {
 
-      if(error != null){
+        if (error != null) {
 
-          result.rejectValue("error", "error.login", "mesg");
+            result.rejectValue("error", "error.login", "mesg");
 
-      }
+        }
         if (result.hasErrors()) {
 
 
@@ -48,17 +48,17 @@ public class LoginController {
 
         model.addAttribute("message", "zalogowałeś się!");
 
-               return "home";
+        return "home";
     }
 
     @RequestMapping(value = "/login", method = {RequestMethod.GET, RequestMethod.PUT})
-    public String showLogin(Model model){
+    public String showLogin(Model model) {
 
-      User user = new User();
+        User user = new User();
 
         model.addAttribute("login", user);
 
-      return "login";
+        return "login";
     }
 
 }

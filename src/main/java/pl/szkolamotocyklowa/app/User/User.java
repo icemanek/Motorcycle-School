@@ -48,7 +48,7 @@ public class User {
     private String licence;
 
     @Column
-    @Type(type="date")
+    @Type(type = "date")
     private Date birth;
 
     private String role = "user";

@@ -19,7 +19,7 @@ public class ValidationController {
     private Validator validator;
 
     @Autowired
-    void Validator(Validator validator){
+    void Validator(Validator validator) {
         this.validator = validator;
     }
 

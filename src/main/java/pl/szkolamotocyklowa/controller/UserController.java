@@ -10,6 +10,7 @@ import pl.szkolamotocyklowa.app.User.ConfirmationToken;
 import pl.szkolamotocyklowa.app.User.User;
 import pl.szkolamotocyklowa.repository.ConfirmationTokenRepository;
 import pl.szkolamotocyklowa.repository.UserRepository;
+
 import javax.validation.Valid;
 import java.util.*;
 
@@ -18,29 +19,28 @@ import java.util.*;
 public class UserController {
 
 
-     private UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
-     void userRepo(UserRepository userRepository){
+    void userRepo(UserRepository userRepository) {
 
-         this.userRepository = userRepository;
-     }
+        this.userRepository = userRepository;
+    }
 
 
     private EmailSender emailSender;
 
-     @Autowired
-    void EmailSender(EmailSender emailSender){
-         this.emailSender = emailSender;
-     }
-
+    @Autowired
+    void EmailSender(EmailSender emailSender) {
+        this.emailSender = emailSender;
+    }
 
 
     private ConfirmationTokenRepository confirmationTokenRepository;
 
 
     @Autowired
-    void ConfirmationTokenRepository(ConfirmationTokenRepository confirmationTokenRepository){
+    void ConfirmationTokenRepository(ConfirmationTokenRepository confirmationTokenRepository) {
         this.confirmationTokenRepository = confirmationTokenRepository;
     }
 
@@ -90,7 +90,7 @@ public class UserController {
 
             confirmationTokenRepository.save(confirmationToken);
 
-            emailSender.sendRegistrationMail(user.getEmail(), "<br><br> <a href=http://localhost:8080/user/confirm-account?token=" + confirmationToken.getConfirmationToken() +">Kliknij tutaj</a>");
+            emailSender.sendRegistrationMail(user.getEmail(), "<br><br> <a href=http://localhost:8080/user/confirm-account?token=" + confirmationToken.getConfirmationToken() + ">Kliknij tutaj</a>");
 
             model.addAttribute("confirmationMessage", "Pomyślnie utworzyłeś konto! Potwierdzenie wysłane na adres  " + user.getEmail());
 
@@ -124,7 +124,6 @@ public class UserController {
 
 
     }
-
 
 
     //<----------------Edycja użytkownika----------------->

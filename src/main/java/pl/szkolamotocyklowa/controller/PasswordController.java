@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import pl.szkolamotocyklowa.app.EmailSender;
 import pl.szkolamotocyklowa.app.User.User;
 import pl.szkolamotocyklowa.repository.UserRepository;
+
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -22,7 +23,7 @@ public class PasswordController {
     private UserRepository userRepository;
 
     @Autowired
-    void userRepo(UserRepository userRepository){
+    void userRepo(UserRepository userRepository) {
 
         this.userRepository = userRepository;
     }
@@ -31,10 +32,9 @@ public class PasswordController {
     private EmailSender emailSender;
 
     @Autowired
-    void EmailSender(EmailSender emailSender){
+    void EmailSender(EmailSender emailSender) {
         this.emailSender = emailSender;
     }
-
 
 
     @GetMapping(value = "/forgot")
@@ -57,7 +57,7 @@ public class PasswordController {
 
         userRepository.save(user);
 
-        emailSender.sendResetPasswordMail(user.getEmail(), "<br> <br> <a href=http://localhost:8080/password/reset?resetToken=" + user.getResetToken()+">Kliknij tutaj"+"</a>");
+        emailSender.sendResetPasswordMail(user.getEmail(), "<br> <br> <a href=http://localhost:8080/password/reset?resetToken=" + user.getResetToken() + ">Kliknij tutaj" + "</a>");
 
         model.addAttribute("succ", "Jeśli email istnieje w bazie, został wysłany link resetujący hasło.");
 
