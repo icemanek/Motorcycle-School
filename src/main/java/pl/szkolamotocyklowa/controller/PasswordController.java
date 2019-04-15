@@ -68,16 +68,7 @@ public class PasswordController {
 
         userRepository.save(user);
 
-        String body = "http://localhost:8080/password/reset?resetToken=" + user.getResetToken();
-
-        emailSender.sendMail(user.getEmail(), "Resetowanie hasła", "<html>" +
-                "<head>" + "<style type='text/css'>" +
-                "body { background: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%); font-family: 'Yanone Kaffeesatz'; font-weight: 700; font-size: 1.4em;}" +
-                "h1{background-color: #353535; color: chocolate;}" + "a{color:green;}" +
-                "p{color:black}" + "</style>" + "</head>" + "<body>" +
-                "<h1> <b> Witaj " + " " + user.getFirstName() + "!</b> </h1>" + "<p> <br><br> Poprosiłeś/aś o link do resetowania hasła." +
-                "<br><br>Aby dokończyc proces musisz kliknąć w link który znajduje się poniżej. " + "<br><br> </p>"
-                + "<a href='" + body + "'>" + "Kliknij tutaj aby zresetować hasło. <br><br>" + "</a>" + " <p> <b>Gotowe! </p>" + "</body>" + "</html>");
+        emailSender.sendResetPasswordMail(user.getEmail(), "<br> <br> <a href=http://localhost:8080/password/reset?resetToken=" + user.getResetToken()+">Kliknij tutaj"+"</a>");
 
 
         model.addAttribute("succ", "Jeśli email istnieje w bazie, został wysłany link resetujący hasło.");
