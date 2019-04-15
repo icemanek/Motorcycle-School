@@ -10,8 +10,8 @@ import java.util.Properties;
 @Service
 public class EmailSender{
 
-    private final String username = "icefarnek@gmail.com";
-    private final String password = "emil1210";
+    private final String username = "**********";
+    private final String password = "*******";
     private   Properties props = new Properties();
 
 
