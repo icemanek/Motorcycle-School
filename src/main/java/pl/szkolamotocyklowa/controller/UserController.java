@@ -90,7 +90,11 @@ public class UserController {
 
             confirmationTokenRepository.save(confirmationToken);
 
-            emailSender.sendRegistrationMail(user.getEmail(), "<br><br> <a href=http://localhost:8080/user/confirm-account?token=" + confirmationToken.getConfirmationToken() + ">Kliknij tutaj</a>");
+            emailSender.sendRegistrationMail(user.getEmail(), "<a href=http://localhost:8080/user/confirm-account?token="
+                    + confirmationToken.getConfirmationToken()
+                    +" style='text-decoration:none;background:#F5A623;color:#000000;" +
+                    "font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:30px;" +
+                    "font-weight:normal;line-height:120%;text-transform:none;margin:0px;' target='_blank'>Kliknij tutaj!</a>") ;
 
             model.addAttribute("confirmationMessage", "Pomyślnie utworzyłeś konto! Potwierdzenie wysłane na adres  " + user.getEmail());
 
