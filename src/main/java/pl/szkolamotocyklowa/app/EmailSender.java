@@ -8,9 +8,11 @@ import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
 @Service
-public class EmailSender {
+public class EmailSender{
 
     public void sendMail(String to, String subject, String body) throws MessagingException{
+
+
 
         final String username = "icefarnek@gmail.com";
         final String password = "emil1210";
@@ -29,6 +31,7 @@ public class EmailSender {
                 }
         );
 
+
         try {
 
             Message message = new MimeMessage(session);
@@ -42,6 +45,8 @@ public class EmailSender {
             System.out.println("Email wysłany");
 
         } catch (MessagingException e) {
+
+
             throw new RuntimeException(e);
         }
     }

@@ -1,7 +1,6 @@
 package pl.szkolamotocyklowa.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,20 +19,41 @@ import java.util.*;
 @RequestMapping("/user")
 public class UserController {
 
-    @Autowired
-    UserRepository userRepository;
+
+     private UserRepository userRepository;
 
     @Autowired
-    EmailSender emailSender;
+     void userRepo(UserRepository userRepository){
 
-    @Autowired
-    Validator validator;
+         this.userRepository = userRepository;
+     }
 
-    @Autowired
+
+    private EmailSender emailSender;
+
+     @Autowired
+    void EmailSender(EmailSender emailSender){
+         this.emailSender = emailSender;
+     }
+
+
+    private Validator validator;
+
+     @Autowired
+     void Validator(Validator validator){
+         this.validator = validator;
+     }
+
+
     private ConfirmationTokenRepository confirmationTokenRepository;
 
 
-    // <----------------------------Dodawanie użytkownika------------------->
+    @Autowired
+    void ConfirmationTokenRepository(ConfirmationTokenRepository confirmationTokenRepository){
+        this.confirmationTokenRepository = confirmationTokenRepository;
+    }
+
+    // <----------------------------Rejestracja użytkownika------------------->
 
     @GetMapping("/add")
     public String showUser(Model model) {
@@ -96,6 +116,35 @@ public class UserController {
         }
     }
 
+
+    //<---------------Aktywacja konta przez link wysłany na email----------------------------------->
+
+    @RequestMapping(value = "/confirm-account", method = {RequestMethod.GET, RequestMethod.POST})
+    public String confirmUserAccount(Model model, @RequestParam("token") String confirmationToken) {
+        ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
+
+
+        if (token != null) {
+
+            User user = userRepository.findByEmail(token.getUser().getEmail());
+            user.setEnabled(true);
+            userRepository.save(user);
+
+            return "accountVerified";
+
+
+        } else {
+
+            model.addAttribute("error", "WYstąpił błąd! Spróbuj ponownie lub zgłoś się do administratora!");
+
+            return "error";
+        }
+
+
+    }
+
+
+
     //<----------------Edycja użytkownika----------------->
 
     @GetMapping("/update/{id}")
@@ -136,34 +185,6 @@ public class UserController {
         userRepository.deleteById(id);
 
         return "redirect:../all";
-    }
-
-    @RequestMapping(value = "/confirm-account", method = {RequestMethod.GET, RequestMethod.POST})
-    public String confirmUserAccount(Model model, @RequestParam("token") String confirmationToken) {
-        ConfirmationToken token = confirmationTokenRepository.findByConfirmationToken(confirmationToken);
-
-
-        if (token != null) {
-
-            User user = userRepository.findByEmail(token.getUser().getEmail());
-            user.setEnabled(true);
-            userRepository.save(user);
-
-            return "accountVerified";
-
-        }
-        if (token.isExpired()) {
-
-            model.addAttribute("error", "Link aktywacyjny wygasł");
-            return "error";
-        } else {
-
-            model.addAttribute("error", "WYstąpił błąd! Spróbuj ponownie lub zgłoś się do administratora!");
-
-            return "error";
-        }
-
-
     }
 
 }

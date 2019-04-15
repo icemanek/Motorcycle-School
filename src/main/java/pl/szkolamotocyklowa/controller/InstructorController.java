@@ -16,8 +16,13 @@ import java.util.List;
 public class InstructorController {
 
 
+
+    private InstructorRepository instructorRepository;
+
     @Autowired
-    InstructorRepository instructorRepository;
+    void InstructorRepository(InstructorRepository instructorRepository){
+        this.instructorRepository = instructorRepository;
+    }
 
 
     // <----------------------------Dodawanie instruktora------------------->

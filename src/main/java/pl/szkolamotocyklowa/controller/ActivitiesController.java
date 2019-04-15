@@ -14,9 +14,13 @@ import java.util.List;
 public class ActivitiesController {
 
 
-    @Autowired
-    ActivitiesRepository activitiesRepository;
 
+    private ActivitiesRepository activitiesRepository;
+
+    @Autowired
+    void ActivitiesRepository(ActivitiesRepository activitiesRepository){
+        this.activitiesRepository = activitiesRepository;
+    }
 
 
     // <----------------------------Dodawanie kursow------------------->

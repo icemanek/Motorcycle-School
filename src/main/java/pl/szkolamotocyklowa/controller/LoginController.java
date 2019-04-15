@@ -14,8 +14,13 @@ import javax.validation.Valid;
 @Controller
 public class LoginController {
 
-   @Autowired
-   UserRepository userRepository;
+    private UserRepository userRepository;
+
+    @Autowired
+    void userRepo(UserRepository userRepository){
+
+        this.userRepository = userRepository;
+    }
 
 
   @RequestMapping(value = "/login", method = {RequestMethod.POST, RequestMethod.PUT})

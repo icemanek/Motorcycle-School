@@ -16,8 +16,12 @@ import java.util.Set;
 @Controller
 public class ValidationController {
 
-    @Autowired
     private Validator validator;
+
+    @Autowired
+    void Validator(Validator validator){
+        this.validator = validator;
+    }
 
     @GetMapping("/validate")
     public String validate(Model model) {

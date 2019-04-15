@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.szkolamotocyklowa.app.EmailSender;
 import pl.szkolamotocyklowa.app.User.User;
+import pl.szkolamotocyklowa.repository.ConfirmationTokenRepository;
 import pl.szkolamotocyklowa.repository.UserRepository;
 import javax.mail.MessagingException;
 import javax.validation.Validator;
@@ -21,16 +22,30 @@ import java.util.UUID;
 public class PasswordController {
 
 
-
-
-    @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
 
     @Autowired
-    EmailSender emailSender;
+    void userRepo(UserRepository userRepository){
+
+        this.userRepository = userRepository;
+    }
+
+
+    private EmailSender emailSender;
 
     @Autowired
-    Validator validator;
+    void EmailSender(EmailSender emailSender){
+        this.emailSender = emailSender;
+    }
+
+
+    private Validator validator;
+
+    @Autowired
+    void Validator(Validator validator){
+        this.validator = validator;
+    }
+
 
 
     @GetMapping(value = "/forgot")
