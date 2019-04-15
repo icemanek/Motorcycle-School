@@ -10,9 +10,7 @@ import pl.szkolamotocyklowa.app.User.ConfirmationToken;
 import pl.szkolamotocyklowa.app.User.User;
 import pl.szkolamotocyklowa.repository.ConfirmationTokenRepository;
 import pl.szkolamotocyklowa.repository.UserRepository;
-import javax.mail.MessagingException;
 import javax.validation.Valid;
-import javax.validation.Validator;
 import java.util.*;
 
 @Controller
@@ -37,13 +35,6 @@ public class UserController {
      }
 
 
-    private Validator validator;
-
-     @Autowired
-     void Validator(Validator validator){
-         this.validator = validator;
-     }
-
 
     private ConfirmationTokenRepository confirmationTokenRepository;
 
@@ -65,7 +56,7 @@ public class UserController {
     }
 
     @PostMapping("/add")
-    public String addUser(@ModelAttribute @Valid User user, Model model, BindingResult bindingResult) throws MessagingException {
+    public String addUser(@ModelAttribute @Valid User user, Model model, BindingResult bindingResult) {
 
 
         User user1 = userRepository.findByEmail(user.getEmail());

@@ -10,8 +10,8 @@ import java.util.Properties;
 @Service
 public class EmailSender{
 
-    private final String username = "**********";
-    private final String password = "*******";
+    private final String username = "*******";
+    private final String password = "******";
     private   Properties props = new Properties();
 
 
@@ -47,7 +47,7 @@ public class EmailSender{
                     "a{color:green;}" +"p{color:black}" + "</style>" +
                     "</head>" + "<body>" +"<h1> <b> Witaj! "+"</b> </h1>" +
                     "<p> <br><br> Poprosiłeś/aś o link do resetowania hasła." +
-                    "<br><br>Aby dokończyc proces musisz kliknąć w link który znajduje się poniżej. " + link+
+                    "<br><br>Aby dokończyc proces musisz kliknąć w link który znajduje się poniżej. " +link+
                     "<br><br> </p>"+" <p> <b>Gotowe! </p>" + "</body>" + "</html>";
 
             message.setContent(email2, "text/html; charset=utf-8");
@@ -66,8 +66,6 @@ public class EmailSender{
 
 
     public void sendRegistrationMail(String to, String body) {
-
-
 
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");

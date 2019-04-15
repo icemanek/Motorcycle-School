@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.szkolamotocyklowa.app.EmailSender;
 import pl.szkolamotocyklowa.app.User.User;
-import pl.szkolamotocyklowa.repository.ConfirmationTokenRepository;
 import pl.szkolamotocyklowa.repository.UserRepository;
-import javax.mail.MessagingException;
-import javax.validation.Validator;
 import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
@@ -39,14 +36,6 @@ public class PasswordController {
     }
 
 
-    private Validator validator;
-
-    @Autowired
-    void Validator(Validator validator){
-        this.validator = validator;
-    }
-
-
 
     @GetMapping(value = "/forgot")
     public String displayForgotPasswordPage(Model model) {
@@ -58,7 +47,7 @@ public class PasswordController {
     }
 
     @PostMapping(value = "/forgot")
-    public String processForgotPassword(String email, Model model) throws MessagingException {
+    public String processForgotPassword(String email, Model model) {
 
 
         User user = userRepository.findByEmail(email);
@@ -69,7 +58,6 @@ public class PasswordController {
         userRepository.save(user);
 
         emailSender.sendResetPasswordMail(user.getEmail(), "<br> <br> <a href=http://localhost:8080/password/reset?resetToken=" + user.getResetToken()+">Kliknij tutaj"+"</a>");
-
 
         model.addAttribute("succ", "Jeśli email istnieje w bazie, został wysłany link resetujący hasło.");
 
