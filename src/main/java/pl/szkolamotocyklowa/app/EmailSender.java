@@ -105,20 +105,23 @@ public class EmailSender {
                     "<table role='presentation' cellpadding='0' cellspacing='0' style='border-collapse:separate;width:100%;' " +
                     "align='center' border='0'><tbody><tr><td style='border:0px solid #000;" +
                     "border-radius:33px;color:#000000;cursor:auto;padding:20px 60px;' align='center'" +
-                    " valign='middle' bgcolor='#F5A623'>\"+ body+\"</td></tr></tbody></table></td></tr></tbody></table></div>" +
-                    "</td></tr></tbody></table></div><div style='margin:0px auto;max-width:600px;'>" +
-                    "<table role='presentation' cellpadding='0' cellspacing='0' style='font-size:0px;width:100%;' " +
-                    "align='center' border='0'><tbody><tr><td style='text-align:center;vertical-align:top;" +
-                    "direction:ltr;font-size:0px;padding:9px 0px 9px 0px;'><div class='mj-column-per-100 outlook-group-fix' " +
+                    " valign='middle' bgcolor='#F5A623'> <a href=http://localhost:8080/password/reset?resetToken="
+                    + link +" style='text-decoration:none;background:#F5A623;color:#000000;"+
+                    "font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:30px;" +
+                    "font-weight:normal;line-height:120%;text-transform:none;margin:0px;' target='_blank'>Resetowanie hasła</a></td></tr></tbody></table></td></tr></tbody></table></div></td></tr></tbody>" +
+                    "</table></div><div style='margin:0px auto;max-width:600px;'><table role='presentation'" +
+                    " cellpadding='0' cellspacing='0' style='font-size:0px;width:100%;' align='center' border='0'>" +
+                    "<tbody><tr><td style='text-align:center;vertical-align:top;direction:ltr;font-size:0px;" +
+                    "padding:9px 0px 9px 0px;'><div class='mj-column-per-100 outlook-group-fix' " +
                     "style='vertical-align:top;display:inline-block;direction:ltr;font-size:13px;text-align:left;width:100%;'>" +
-                    "<table role='presentation' cellpadding='0' cellspacing='0' width='100%' border='0'><tbody></tbody>" +
-                    "</table></div></td></tr></tbody></table></div></div></body></html>;";
+                    "<table role='presentation' cellpadding='0' cellspacing='0' width='100%' border='0'>" +
+                    "<tbody></tbody></table></div></td></tr></tbody></table></div></div></body></html>";
 
             message.setContent(email2, "text/html; charset=utf-8");
 
             Transport.send(message);
 
-            System.out.println("Email wysłany");
+            System.out.println("Email resetowania hasła wysłany");
 
         } catch (MessagingException e) {
 
@@ -208,8 +211,10 @@ public class EmailSender {
                     "padding:25px 25px 25px 25px;' align='center'><table role='presentation' cellpadding='0'" +
                     " cellspacing='0' style='border-collapse:separate;width:100%;' align='center' border='0'>" +
                     "<tbody><tr><td style='border:0px solid #000;border-radius:33px;color:#000000;" +
-                    "cursor:auto;padding:20px 60px;' align='center' valign='middle' bgcolor='#F5A623'>"
-                    + body+"</td></tr></tbody></table></td></tr></tbody></table></div></td></tr></tbody>" +
+                    "cursor:auto;padding:20px 60px;' align='center' valign='middle' bgcolor='#F5A623'><a href=http://localhost:8080/user/confirm-account?token="
+                    + body+" style='text-decoration:none;background:#F5A623;color:#000000;"+
+                    "font-family:Ubuntu, Helvetica, Arial, sans-serif, Helvetica, Arial, sans-serif;font-size:30px;" +
+                    "font-weight:normal;line-height:120%;text-transform:none;margin:0px;' target='_blank'>Kliknij tutaj!</a></td></tr></tbody></table></td></tr></tbody></table></div></td></tr></tbody>" +
                     "</table></div><div style='margin:0px auto;max-width:600px;'><table role='presentation'" +
                     " cellpadding='0' cellspacing='0' style='font-size:0px;width:100%;' align='center' border='0'>" +
                     "<tbody><tr><td style='text-align:center;vertical-align:top;direction:ltr;font-size:0px;" +
@@ -222,7 +227,7 @@ public class EmailSender {
 
             Transport.send(message);
 
-            System.out.println("Email wysłany");
+            System.out.println("Email weryfikacji konta wysłany");
 
         } catch (MessagingException e) {
 
