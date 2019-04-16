@@ -82,7 +82,7 @@ public class EmailSender {
                     "cellspacing='0' width='100%' border='0'><tbody><tr><td style='word-wrap:break-word;font-size:0px;" +
                     "padding:15px 15px 15px 15px;' align='center'><div style='cursor:auto;color:#F5A623;" +
                     "font-family:Ubuntu, Helvetica, Arial, sans-serif;font-size:11px;line-height:1.5;text-align:center;'>" +
-                    "<p><span style='font-size:24px;'><strong>Resetowanie hasła</strong></span></p></div></td></tr></tbody></table>" +
+                    "<p><span style='font-size:24px;'><strong>Poprosiłeś/aś o reset hasła</strong></span></p></div></td></tr></tbody></table>" +
                     "</div></td></tr></tbody></table></div><div style='margin:0px auto;max-width:600px;'>" +
                     "<table role='presentation' cellpadding='0' cellspacing='0' style='font-size:0px;width:100%;'" +
                     " align='center' border='0'><tbody><tr><td style='text-align:center;vertical-align:top;" +
@@ -92,7 +92,7 @@ public class EmailSender {
                     "<td style='word-wrap:break-word;font-size:0px;padding:15px 15px 15px 15px;' align='center'>" +
                     "<div style='cursor:auto;color:#F5A623;font-family:Ubuntu, Helvetica, Arial, sans-serif;" +
                     "font-size:11px;line-height:1.5;text-align:center;'><p><span style='font-size:20px;'>" +
-                    "<strong>Aby zmienić hasło musisz kliknąć przycisk który znajduje się poniżej</strong>" +
+                    "<strong>Aby ustawić nowe hasło musisz kliknąć przycisk który znajduje się poniżej</strong>" +
                     "</span></p></div></td></tr></tbody></table></div>></td></tr></tbody></table></div>" +
                     "<div style='margin:0px auto;max-width:600px;'>" +
                     "<table role='presentation' cellpadding='0' cellspacing='0' style='font-size:0px;width:100%;'" +

@@ -3,8 +3,8 @@ package pl.szkolamotocyklowa.app.User;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.Type;
+import org.hibernate.validator.constraints.Length;
 import org.mindrot.jbcrypt.BCrypt;
-
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.sql.Date;
@@ -21,16 +21,20 @@ public class User {
     private Long id;
 
     @NotEmpty(message = "Pole nie może być puste!")
+    @Length(min = 5, message = "Za mało znaków")
     @Column(unique = true)
     private String username;
 
     @NotEmpty(message = "Pole nie może być puste!")
+    @Length(min = 3, message = "Za mało znaków")
     private String firstName;
 
     @NotEmpty(message = "Pole nie może być puste!")
+    @Length(min = 2, message = "Za mało znaków")
     private String lastName;
 
     @NotEmpty(message = "Pole nie może być puste!")
+    @Length(min = 8, message = "Za malo znaków")
     private String password;
 
     @Email

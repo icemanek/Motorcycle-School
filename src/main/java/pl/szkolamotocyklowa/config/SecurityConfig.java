@@ -17,8 +17,13 @@ import pl.szkolamotocyklowa.app.DataSource;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+
+    private DataSource dataSource;
+
     @Autowired
-    DataSource dataSource;
+    private void DataSource(DataSource dataSource){
+        this.dataSource = dataSource;
+    }
 
 
     @Bean

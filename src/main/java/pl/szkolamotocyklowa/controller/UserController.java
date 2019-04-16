@@ -8,9 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.szkolamotocyklowa.app.EmailSender;
 import pl.szkolamotocyklowa.app.User.ConfirmationToken;
 import pl.szkolamotocyklowa.app.User.User;
+import pl.szkolamotocyklowa.app.User.UserService;
 import pl.szkolamotocyklowa.repository.ConfirmationTokenRepository;
-import pl.szkolamotocyklowa.repository.UserRepository;
-
 import javax.validation.Valid;
 import java.util.*;
 
@@ -19,12 +18,12 @@ import java.util.*;
 public class UserController {
 
 
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
-    void userRepo(UserRepository userRepository) {
+    void userRepo(UserService userService) {
 
-        this.userRepository = userRepository;
+        this.userService = userService;
     }
 
 
@@ -37,7 +36,6 @@ public class UserController {
 
 
     private ConfirmationTokenRepository confirmationTokenRepository;
-
 
     @Autowired
     void ConfirmationTokenRepository(ConfirmationTokenRepository confirmationTokenRepository) {
@@ -59,8 +57,8 @@ public class UserController {
     public String addUser(@ModelAttribute @Valid User user, Model model, BindingResult bindingResult) {
 
 
-        User user1 = userRepository.findByEmail(user.getEmail());
-        User user2 = userRepository.findByUsername(user.getUsername());
+        User user1 = userService.findByEmail(user.getEmail());
+        User user2 = userService.findByUsername(user.getUsername());
 
         if (user1 != null) {
             bindingResult.rejectValue("email", "error.email", "Jest juz taki email w bazie!");
@@ -82,7 +80,7 @@ public class UserController {
 
         } else {
 
-            userRepository.save(user);
+            userService.createUser(user);
 
             ConfirmationToken confirmationToken = new ConfirmationToken(user);
 
@@ -108,9 +106,9 @@ public class UserController {
 
         if (token != null) {
 
-            User user = userRepository.findByEmail(token.getUser().getEmail());
+            User user = userService.findByEmail(token.getUser().getEmail());
             user.setEnabled(true);
-            userRepository.save(user);
+            userService.createUser(user);
 
             return "accountVerified";
 
@@ -132,7 +130,7 @@ public class UserController {
     public String updateUser(@PathVariable Long id, Model model) {
 
 
-        User user = userRepository.findUserById(id);
+        User user = userService.findUserById(id);
         model.addAttribute("user", user);
 
         return "register_user";
@@ -141,7 +139,7 @@ public class UserController {
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable Long id, @ModelAttribute User user) {
 
-        userRepository.save(user);
+        userService.createUser(user);
 
         return "redirect:../all";
 
@@ -152,7 +150,7 @@ public class UserController {
     @GetMapping("/all")
     public String allUsers(Model model) {
 
-        List<User> userList = userRepository.findAll();
+        List<User> userList = userService.findAll();
         model.addAttribute("users", userList);
 
         return "userList";
@@ -163,7 +161,7 @@ public class UserController {
     @GetMapping("/delete/{id}")
     public String deleteUser(@PathVariable Long id) {
 
-        userRepository.deleteById(id);
+        userService.deleteUser(id);
 
         return "redirect:../all";
     }

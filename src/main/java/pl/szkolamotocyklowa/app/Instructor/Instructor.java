@@ -1,11 +1,12 @@
 package pl.szkolamotocyklowa.app.Instructor;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.validator.constraints.Length;
 import org.mindrot.jbcrypt.BCrypt;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.NotEmpty;
 import java.time.LocalDate;
 
 
@@ -15,24 +16,28 @@ public class Instructor {
 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @NotBlank
+    @NotEmpty(message = "Pole nie może być puste!")
     @Column(unique = true)
-    @Size(min = 3)
+    @Length(min = 3, message = "Za mało znaków")
     private String loginInstructor;
 
-    @NotBlank
+    @NotEmpty(message = "Pole nie może być puste!")
+    @Length(min = 2, message = "Za mało znaków")
     private String firstNameInstructor;
 
+    @NotEmpty(message = "Pole nie może być puste!")
+    @Length(min = 8, message = "Za mało znaków")
     private String password;
 
-    @NotBlank
+    @NotEmpty(message = "Pole nie może być puste!")
+    @Length(min = 2, message = "Za mało znaków")
     private String lastNameInstructor;
 
-    @NotBlank
-    @Email
+    @NotEmpty(message = "Pole nie może być puste!")
+    @Email(message = "Wpisz poprawny email!")
     @Column(unique = true)
     private String emailInstructor;
 
