@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import pl.szkolamotocyklowa.app.EmailSender;
 import pl.szkolamotocyklowa.app.User.User;
-import pl.szkolamotocyklowa.repository.UserRepository;
+import pl.szkolamotocyklowa.app.User.UserService;
 
 import java.util.Map;
 import java.util.Optional;
@@ -20,12 +20,12 @@ import java.util.UUID;
 public class PasswordController {
 
 
-    private UserRepository userRepository;
+    private UserService userService;
 
     @Autowired
-    void userRepo(UserRepository userRepository) {
+    void userRepo(UserService userService) {
 
-        this.userRepository = userRepository;
+        this.userService = userService;
     }
 
 
@@ -50,12 +50,13 @@ public class PasswordController {
     public String processForgotPassword(String email, Model model) {
 
 
-        User user = userRepository.findByEmail(email);
+        User user = userService.findByEmail(email);
 
 
         user.setResetToken(UUID.randomUUID().toString());
 
-        userRepository.save(user);
+       userService.updateUser(user);
+
         emailSender.sendResetPasswordMail(user.getEmail(), user.getResetToken());
 
         model.addAttribute("succ", "Jeśli email istnieje w bazie, został wysłany link resetujący hasło.");
@@ -69,7 +70,7 @@ public class PasswordController {
     @GetMapping(value = "/reset")
     public String displayResetPasswordPage(Model model, @RequestParam("resetToken") String resetToken) {
 
-        Optional<User> user = userRepository.findByResetToken(resetToken);
+        Optional<User> user = userService.findByResetToken(resetToken);
 
         if (user.isPresent()) {
 
@@ -88,7 +89,7 @@ public class PasswordController {
     public String setNewPassword(Model model, @RequestParam Map<String, String> requestParams) {
 
 
-        Optional<User> user1 = userRepository.findByResetToken(requestParams.get("resetToken"));
+        Optional<User> user1 = userService.findByResetToken(requestParams.get("resetToken"));
 
 
         if (user1.isPresent()) {
@@ -99,11 +100,12 @@ public class PasswordController {
 
             resetUser.setResetToken(null);
 
-            userRepository.save(resetUser);
+            userService.updateUser(resetUser);
 
             model.addAttribute("passChng", "Hasło zostało zmienione!");
 
             return "home";
+
         } else {
 
             model.addAttribute("error", "Błąd!");

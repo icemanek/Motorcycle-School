@@ -107,8 +107,12 @@ public class UserController {
         if (token != null) {
 
             User user = userService.findByEmail(token.getUser().getEmail());
+
             user.setEnabled(true);
-            userService.createUser(user);
+
+            userService.updateUser(user);
+
+
 
             return "accountVerified";
 
@@ -131,6 +135,7 @@ public class UserController {
 
 
         User user = userService.findUserById(id);
+
         model.addAttribute("user", user);
 
         return "register_user";
@@ -139,7 +144,7 @@ public class UserController {
     @PostMapping("/update/{id}")
     public String updateUser(@PathVariable Long id, @ModelAttribute User user) {
 
-        userService.createUser(user);
+        userService.updateUser(user);
 
         return "redirect:../all";
 
@@ -151,6 +156,7 @@ public class UserController {
     public String allUsers(Model model) {
 
         List<User> userList = userService.findAll();
+
         model.addAttribute("users", userList);
 
         return "userList";

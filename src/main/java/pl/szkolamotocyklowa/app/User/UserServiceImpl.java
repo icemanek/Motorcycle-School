@@ -2,14 +2,14 @@ package pl.szkolamotocyklowa.app.User;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.szkolamotocyklowa.repository.UserRepository;
 
-import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-@Transactional
+@Transactional(readOnly = false)
 public class UserServiceImpl implements UserService {
 
 
@@ -35,7 +35,6 @@ public class UserServiceImpl implements UserService {
     public void createUser(User user) {
 
         userDao.createUser(user);
-
     }
 
     @Override
